@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '/screen/dashboard_screen.dart';
+
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
 
@@ -8,8 +10,8 @@ class AppDrawer extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-      width: 140 + (title.length * 6),
-      height: 50,
+      width: 120 + (title.length * 6),
+      height: 45,
       decoration: BoxDecoration(
         color: Colors.grey.withOpacity(0.1),
         borderRadius: BorderRadius.circular(15),
@@ -17,13 +19,14 @@ class AppDrawer extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          splashColor: const Color(0xff3c7b77),
+          splashColor: DashboardScreen.primaryColor,
           onTap: () {},
           child: Row(
             children: [
               FaIcon(
                 icon,
                 color: Colors.grey.withOpacity(0.8),
+                size: 17,
               ),
               const SizedBox(
                 width: 20,
@@ -32,7 +35,7 @@ class AppDrawer extends StatelessWidget {
                 title,
                 style: TextStyle(
                     fontFamily: 'Quicksand',
-                    fontSize: 20,
+                    fontSize: 15,
                     color: Colors.black.withOpacity(0.7),
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1),
@@ -91,7 +94,8 @@ class AppDrawer extends StatelessWidget {
                   bottom: 75,
                   child: CircleAvatar(
                     radius: 45,
-                    backgroundColor: const Color(0xff3c7b77).withOpacity(0.3),
+                    backgroundColor:
+                        DashboardScreen.primaryColor.withOpacity(0.3),
                   ),
                 ),
                 const Positioned(
