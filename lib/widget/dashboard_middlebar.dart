@@ -20,7 +20,7 @@ class DashboardMiddlebar extends StatelessWidget {
             itemCount: newsList.isEmpty ? 4 : newsList.length,
             itemBuilder: (context, index) => const NewsContainer()),
       ),
-      Positioned(bottom: 0, child: DashboardBottombar(barHeight * 0.35))
+      Positioned(bottom: 0, child: DashboardBottombar(barHeight * 0.2))
     ]);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:acm_diocese_of_calabar/screen/training_screen.dart';
 import 'package:flutter/material.dart';
 import '/screen/dashboard_screen.dart';
 
@@ -11,13 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ACM',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-        fontFamily: 'Lato'
-        
-
-      ),
+      theme: ThemeData(primarySwatch: Colors.green, fontFamily: 'Lato'),
       home: DashboardScreen(),
+      routes: {TrainingScreen.routeName: (ctx) =>  TrainingScreen()},
     );
   }
 }

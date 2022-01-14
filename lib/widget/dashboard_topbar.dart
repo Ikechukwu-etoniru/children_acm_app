@@ -8,8 +8,8 @@ class DashboardTopbar extends StatelessWidget {
 
   final List<Color> _colorList = [
     const Color(0xff40E0D0),
-    const Color(0xffFAFA33),
-    const Color(0xff800020)
+    const Color(0xffFFC000),
+    const Color(0xffDA70D6)
   ];
 
   @override
@@ -39,7 +39,7 @@ class DashboardTopbar extends StatelessWidget {
             ),
           ),
           SizedBox(
-             height: barHeight * 0.1,
+            height: barHeight * 0.1,
             child: const Text(
               'Grow everyday in Christ',
               style: TextStyle(

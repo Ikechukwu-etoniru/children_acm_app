@@ -1,3 +1,4 @@
+import 'package:acm_diocese_of_calabar/screen/training_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -6,7 +7,8 @@ import '/screen/dashboard_screen.dart';
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
 
-  Widget _drawerList(IconData icon, String title) {
+  Widget _drawerList(
+      IconData icon, String title, BuildContext context, int id) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
@@ -20,7 +22,16 @@ class AppDrawer extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           splashColor: DashboardScreen.primaryColor,
-          onTap: () {},
+          onTap: id == 1
+              ? () {
+                  Navigator.of(context).pushReplacementNamed('/');
+                }
+              : id == 2
+                  ? () {
+                      Navigator.of(context)
+                          .pushReplacementNamed(TrainingScreen.routeName);
+                    }
+                  : () {},
           child: Row(
             children: [
               FaIcon(
@@ -117,12 +128,14 @@ class AppDrawer extends StatelessWidget {
               ]),
             ),
             const SizedBox(height: 15),
-            _drawerList(FontAwesomeIcons.thList, 'Dashboard'),
-            _drawerList(FontAwesomeIcons.bookReader, 'Training'),
-            _drawerList(FontAwesomeIcons.calendarAlt, 'ACM Calendar'),
-            _drawerList(FontAwesomeIcons.bible, 'BIBLE'),
-            _drawerList(FontAwesomeIcons.buffer, 'ACM Glossary'),
-            _drawerList(FontAwesomeIcons.university, 'Teaching Aids'),
+            _drawerList(FontAwesomeIcons.thList, 'Dashboard', context, 1),
+            _drawerList(FontAwesomeIcons.bookReader, 'Training', context, 2),
+            _drawerList(
+                FontAwesomeIcons.calendarAlt, 'ACM Calendar', context, 3),
+            _drawerList(FontAwesomeIcons.bible, 'BIBLE', context, 4),
+            _drawerList(FontAwesomeIcons.buffer, 'ACM Glossary', context, 5),
+            _drawerList(
+                FontAwesomeIcons.university, 'Teaching Aids', context, 6),
             const SizedBox(height: 15),
             Expanded(
               child: Container(

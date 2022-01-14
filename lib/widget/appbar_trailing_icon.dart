@@ -9,7 +9,7 @@ class AppbarTrailingIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 30,
-      width: 70,
+      width: 60,
       margin: const EdgeInsets.only(top: 5),
       child: Material(
         borderRadius: const BorderRadius.only(
@@ -24,7 +24,7 @@ class AppbarTrailingIcon extends StatelessWidget {
           ),
           splashColor: Colors.lightGreen,
           onTap: () {},
-          child: Container(),
+          child: const Icon(Icons.more_horiz_rounded, color: Colors.white,size: 35,),
         ),
       ),
     );

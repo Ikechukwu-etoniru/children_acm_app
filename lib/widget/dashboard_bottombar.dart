@@ -18,6 +18,9 @@ class DashboardBottombar extends StatelessWidget {
           topRight: Radius.circular(40),
         ),
       ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+      ),
     );
   }
 }
