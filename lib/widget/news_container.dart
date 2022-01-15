@@ -35,7 +35,7 @@ class NewsContainer extends StatelessWidget {
                   'Title of Article',
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
-                    fontSize: 20,
+                    fontSize: 17,
                     fontFamily: 'Quicksand',
                   ),
                 ),

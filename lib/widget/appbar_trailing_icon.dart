@@ -9,9 +9,8 @@ class AppbarTrailingIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 30,
-      width: 60,
-      margin: const EdgeInsets.only(top: 5),
+      width: 35,
+      margin: const EdgeInsets.only(top: 10, bottom: 10),
       child: Material(
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(30),

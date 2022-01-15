@@ -14,9 +14,10 @@ class TeachingAidScreen extends StatelessWidget {
         onPressed: () {
           Scaffold.of(context).openDrawer();
         },
-        icon: FaIcon(
-          FontAwesomeIcons.arrowLeft,
-          color: Colors.black.withOpacity(0.7),
+        icon: const Icon(
+          Icons.menu_open_rounded,
+          color: Colors.black,
+          size: 25,
         ),
       );
     }),
@@ -61,14 +62,14 @@ class TeachingAidScreen extends StatelessWidget {
               style: TextStyle(
                 color: id == 2 || id == 3 ? Colors.brown : Colors.white,
                 fontWeight: FontWeight.w800,
-                fontSize: 30,
+                fontSize: 27,
                 letterSpacing: 1,
               ),
             ),
           ),
           Positioned(
             top: 60,
-            left: 30,
+            left: 20,
             child: SizedBox(
               width: 250,
               height: 80,
@@ -78,7 +79,7 @@ class TeachingAidScreen extends StatelessWidget {
                   fontFamily: 'Quicksand',
                   color: id == 2 || id == 3 ? Colors.brown : Colors.white,
                   fontWeight: FontWeight.w600,
-                  fontSize: 18,
+                  fontSize: 16,
                   letterSpacing: 1,
                 ),
               ),
@@ -127,20 +128,20 @@ class TeachingAidScreen extends StatelessWidget {
                 ),
                 const Positioned(
                   top: 30,
-                  left: 30,
+                  left: 20,
                   child: Text(
                     'Teaching Aids',
                     style: TextStyle(
                       color: Colors.brown,
                       fontWeight: FontWeight.w800,
-                      fontSize: 30,
+                      fontSize: 27,
                       letterSpacing: 1,
                     ),
                   ),
                 ),
                 const Positioned(
                   top: 80,
-                  left: 30,
+                  left: 20,
                   child: SizedBox(
                     width: 250,
                     height: 80,
@@ -150,7 +151,7 @@ class TeachingAidScreen extends StatelessWidget {
                         fontFamily: 'Quicksand',
                         color: Colors.brown,
                         fontWeight: FontWeight.w600,
-                        fontSize: 18,
+                        fontSize: 14,
                         letterSpacing: 1,
                       ),
                     ),

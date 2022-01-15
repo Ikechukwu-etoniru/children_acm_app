@@ -16,9 +16,10 @@ class TrainingScreen extends StatelessWidget {
         onPressed: () {
           Scaffold.of(context).openDrawer();
         },
-        icon: FaIcon(
-          FontAwesomeIcons.arrowLeft,
-          color: Colors.black.withOpacity(0.7),
+        icon: const Icon(
+          Icons.menu_open_rounded,
+          size: 25,
+          color: Colors.black,
         ),
       );
     }),
@@ -45,8 +46,48 @@ class TrainingScreen extends StatelessWidget {
       backgroundColor: DashboardScreen.primaryColor,
       body: Column(
         children: [
-          Container(
+          SizedBox(
             height: deviceHeight * 0.15,
+            width: double.infinity,
+            child: Stack(
+              children: [
+                Positioned(
+                  bottom: 2,
+                  right: 0,
+                  child: SizedBox(
+                    height: 100,
+                    width: 100,
+                    child: Image.asset(
+                      'images/training_icon.png',
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ),
+                const Positioned(
+                  left: 10,
+                  child: SizedBox(
+                    width: 290,
+                    child: Text(
+                      '"In learning you will teach and in teaching you will learn"',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontFamily: 'Quicksand'),
+                    ),
+                  ),
+                ),
+                const Positioned(
+                  left: 10,
+                  bottom: 10,
+                  child: SizedBox(
+                    width: 290,
+                    child: Text(
+                        'Take our children courses to learn, update and equip yourself for the ministry'),
+                  ),
+                ),
+              ],
+            ),
           ),
           Expanded(
             child: Container(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '/widget/appbar_trailing_icon.dart';
 import '/screen/app_drawer.dart';
@@ -12,18 +11,16 @@ class DashboardScreen extends StatelessWidget {
 
   final myAppbar = AppBar(
     leading: Builder(builder: (context) {
-      return InkWell(
-          onTap: () {
-            Scaffold.of(context).openDrawer();
-          },
-          child: SizedBox(
-            height: 30,
-            width: 50,
-            child: Image.asset(
-              'images/dashboard_icon.png',
-              fit: BoxFit.fill,
-            ),
-          ));
+      return IconButton(
+        onPressed: () {
+          Scaffold.of(context).openDrawer();
+        },
+        icon: const Icon(
+          Icons.menu_open_rounded,
+          color: Colors.black,
+          size: 25,
+        ),
+      );
     }),
     backgroundColor: Colors.transparent,
     elevation: 0,

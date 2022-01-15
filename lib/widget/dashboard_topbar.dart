@@ -1,3 +1,4 @@
+import 'package:acm_diocese_of_calabar/screen/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
 import '/widget/word_container.dart';
@@ -33,7 +34,7 @@ class DashboardTopbar extends StatelessWidget {
               'Word for the day',
               style: TextStyle(
                   fontWeight: FontWeight.w900,
-                  fontSize: 27,
+                  fontSize: 22,
                   wordSpacing: 2,
                   color: Colors.black54),
             ),
