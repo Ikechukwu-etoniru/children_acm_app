@@ -1,8 +1,9 @@
-import 'package:acm_diocese_of_calabar/screen/training_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '/screen/dashboard_screen.dart';
+import '/screen/teaching_aid_screen.dart';
+import '/screen/training_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -31,7 +32,12 @@ class AppDrawer extends StatelessWidget {
                       Navigator.of(context)
                           .pushReplacementNamed(TrainingScreen.routeName);
                     }
-                  : () {},
+                  : id == 6
+                      ? () {
+                          Navigator.of(context).pushReplacementNamed(
+                              TeachingAidScreen.routeName);
+                        }
+                      : () {},
           child: Row(
             children: [
               FaIcon(

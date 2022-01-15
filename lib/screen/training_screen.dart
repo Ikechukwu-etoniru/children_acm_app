@@ -24,20 +24,14 @@ class TrainingScreen extends StatelessWidget {
     }),
     backgroundColor: Colors.transparent,
     elevation: 0,
-    actions: const [AppbarTrailingIcon()],
+    actions: const [AppbarTrailingIcon(color: Colors.white)],
   );
 
-  final List<Color> gridColors = [
-    Colors.deepPurple,
-    Colors.teal,
-    Colors.orange,
-    Colors.red,
-    Colors.purple,
-    Colors.brown,
-    Colors.yellow,
-    Colors.indigo,
-    Colors.amber,
-    Colors.cyan
+  final List<Color> blockColorsList = [
+    const Color(0xfffff0f0),
+    const Color(0xfff3eded),
+    const Color(0xfff5f3ef),
+    const Color(0xffe1e3ff),
   ];
 
   @override
@@ -52,7 +46,7 @@ class TrainingScreen extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: deviceHeight * 0.12,
+            height: deviceHeight * 0.15,
           ),
           Expanded(
             child: Container(
@@ -63,18 +57,41 @@ class TrainingScreen extends StatelessWidget {
                   topRight: Radius.circular(40),
                 ),
               ),
-              child: GridView.builder(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 30, horizontal: 15),
-                  itemCount: 10,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 1.5,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
+              child: Column(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(
+                        top: 20, left: 30, right: 20, bottom: 5),
+                    child: Row(
+                      children: const [
+                        Text(
+                          'Courses',
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black54),
+                        )
+                      ],
+                    ),
                   ),
-                  itemBuilder: (context, index) =>
-                      TrainingBlock(gridColors[index])),
+                  Expanded(
+                    child: GridView.builder(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 15),
+                      itemCount: 4,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 2 / 3,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                      ),
+                      itemBuilder: (context, index) =>
+                          TrainingBlock(blockColorsList[index]),
+                    ),
+                  ),
+                ],
+              ),
             ),
           )
         ],

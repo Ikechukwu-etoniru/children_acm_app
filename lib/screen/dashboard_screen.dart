@@ -12,15 +12,18 @@ class DashboardScreen extends StatelessWidget {
 
   final myAppbar = AppBar(
     leading: Builder(builder: (context) {
-      return IconButton(
-        onPressed: () {
-          Scaffold.of(context).openDrawer();
-        },
-        icon: FaIcon(
-          FontAwesomeIcons.stream,
-          color: Colors.black.withOpacity(0.7),
-        ),
-      );
+      return InkWell(
+          onTap: () {
+            Scaffold.of(context).openDrawer();
+          },
+          child: SizedBox(
+            height: 30,
+            width: 50,
+            child: Image.asset(
+              'images/dashboard_icon.png',
+              fit: BoxFit.fill,
+            ),
+          ));
     }),
     backgroundColor: Colors.transparent,
     elevation: 0,
