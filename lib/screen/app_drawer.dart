@@ -128,7 +128,10 @@ class AppDrawer extends StatelessWidget {
                   left: 20,
                   child: Text(
                     'Grade - Level 0',
-                    style: TextStyle(fontFamily: 'Quicksand', fontSize: 15),
+                    style: TextStyle(
+                        fontFamily: 'Quicksand',
+                        fontSize: 15,
+                        color: DashboardScreen.primaryColor),
                   ),
                 )
               ]),

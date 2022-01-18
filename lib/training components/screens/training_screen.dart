@@ -45,17 +45,27 @@ class TrainingScreen extends StatelessWidget {
       backgroundColor: DashboardScreen.primaryColor,
       body: Column(
         children: [
-          SizedBox(
-            height: deviceHeight * 0.15,
+          Container(
+            height: deviceHeight * 0.30,
             width: double.infinity,
+            margin: const EdgeInsets.only(left: 10, right: 10, bottom: 15),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.withOpacity(0.4),
+                      blurRadius: 3,
+                      spreadRadius: 5)
+                ]),
             child: Stack(
               children: [
                 Positioned(
-                  bottom: 2,
-                  right: 0,
+                  right: 10,
+                  bottom: 40,
                   child: SizedBox(
-                    height: 100,
-                    width: 100,
+                    height: 130,
+                    width: 130,
                     child: Image.asset(
                       'images/training_icon.png',
                       fit: BoxFit.fill,
@@ -63,26 +73,31 @@ class TrainingScreen extends StatelessWidget {
                   ),
                 ),
                 const Positioned(
-                  left: 10,
+                  left: 15,
+                  bottom: 40,
                   child: SizedBox(
-                    width: 290,
+                    width: 220,
                     child: Text(
                       '"In learning you will teach and in teaching you will learn"',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Colors.white,
+                          fontSize: 15,
+                          color: Colors.brown,
                           fontFamily: 'Quicksand'),
                     ),
                   ),
                 ),
                 const Positioned(
-                  left: 10,
-                  bottom: 10,
+                  left: 15,
+                  top: 15,
                   child: SizedBox(
-                    width: 290,
+                    width: 240,
                     child: Text(
-                      'Learn, update and equip yourself for the ministry',
+                      'Train, Learn, Update, Equip yourself for the ministry',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 23,
+                          color: DashboardScreen.primaryColor),
                     ),
                   ),
                 ),

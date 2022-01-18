@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../dashboard_screen.dart';
+
+import '/dashboard_components/screens/widgets/dashboard_teaching_aid_container.dart';
 
 class DashboardBottombar extends StatelessWidget {
   final double barHeight;
@@ -7,19 +8,25 @@ class DashboardBottombar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final deviceWidth = MediaQuery.of(context).size.width;
     return Container(
       height: barHeight,
-      width: deviceWidth,
+      width: double.infinity,
       decoration: const BoxDecoration(
-        color: DashboardScreen.primaryColor,
+        color: Colors.transparent,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(40),
           topRight: Radius.circular(40),
         ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: GridView.builder(
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+        itemCount: 5,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 2/2.3,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10),
+        itemBuilder: (context, index) => const DashboardTeachingAidContainer(),
       ),
     );
   }

@@ -68,6 +68,7 @@ flutter:
     - images/object_lesson_icon.png
     - images/happy_girl.png
     - images/training_icon.png
+    - images/leaf_pic1.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

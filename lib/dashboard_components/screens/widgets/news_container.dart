@@ -2,52 +2,67 @@ import 'package:flutter/material.dart';
 
 class NewsContainer extends StatelessWidget {
   const NewsContainer({Key? key}) : super(key: key);
-//Color(0xff3c7b77)
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 5),
-      height: 160,
+      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+      height: 250,
+      width: 170,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Colors.grey.withOpacity(0.03),
-      ),
-      child: Row(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(25),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.withOpacity(0.1),
+                blurRadius: 1,
+                spreadRadius: 5,
+                offset: const Offset(1, 3))
+          ]),
+      child: Stack(
         children: [
-          Center(
-            child: Container(
-              height: 130,
-              width: 120,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey.withOpacity(0.3)),
-              child: const Center(
-                child: Text('Image'),
+          Container(
+            height: 250,
+            width: 170,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+            child: Center(
+              child: Image.asset(
+                'images/happy_girl.png',
+                fit: BoxFit.contain,
               ),
             ),
           ),
-          Container(
-            padding: const EdgeInsets.only(top: 15, left: 15, right: 5, bottom: 5),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Title of Article',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 17,
-                    fontFamily: 'Quicksand',
-                  ),
-                ),
-                const Text('Brief Description'),
-                Text(
-                  'Date',
-                  style: TextStyle(
-                      color: Colors.grey.withOpacity(0.5),
+          Positioned(
+            bottom: 0,
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 8),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(25),
+                    bottomRight: Radius.circular(25)),
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              height: 70,
+              width: 170,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Title of Article',
+                    style: TextStyle(
+                      fontSize: 17,
                       fontFamily: 'Quicksand',
-                      fontSize: 17),
-                )
-              ],
+                    ),
+                  ),
+                  Text(
+                    'Date',
+                    style: TextStyle(
+                        color: Colors.grey.withOpacity(0.5),
+                        fontFamily: 'Quicksand',
+                        fontSize: 17),
+                  )
+                ],
+              ),
             ),
           )
         ],

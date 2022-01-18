@@ -39,9 +39,8 @@ class TeachingAidScreen extends StatelessWidget {
       child: Hero(
         tag: id,
         child: Container(
-          margin: id.isOdd
-              ? const EdgeInsets.only(right: 10, left: 40, top: 10, bottom: 10)
-              : const EdgeInsets.only(right: 40, left: 10, top: 10, bottom: 10),
+          margin:
+              const EdgeInsets.only(right: 10, left: 10, top: 10, bottom: 10),
           height: 135,
           width: double.infinity,
           decoration: BoxDecoration(
