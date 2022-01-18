@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '/screen/app_drawer.dart';
-import '/screen/dashboard_screen.dart';
+import '/dashboard_components/screens/dashboard_screen.dart';
 import '/widget/appbar_trailing_icon.dart';
-import '/widget/training_widgets.dart/training_blocks.dart';
+import 'widgets/training_blocks.dart';
 
 class TrainingScreen extends StatelessWidget {
   static const routeName = 'training_screen.dart';
@@ -83,7 +82,8 @@ class TrainingScreen extends StatelessWidget {
                   child: SizedBox(
                     width: 290,
                     child: Text(
-                        'Take our children courses to learn, update and equip yourself for the ministry'),
+                      'Learn, update and equip yourself for the ministry',
+                    ),
                   ),
                 ),
               ],

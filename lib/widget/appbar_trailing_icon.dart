@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '/screen/dashboard_screen.dart';
+import '../dashboard_components/screens/dashboard_screen.dart';
 
 class AppbarTrailingIcon extends StatelessWidget {
   final Color? color;
@@ -27,7 +27,7 @@ class AppbarTrailingIcon extends StatelessWidget {
           child: Icon(
             Icons.more_horiz_rounded,
             color: color == null ? Colors.white : DashboardScreen.primaryColor,
-            size: 35,
+            size: 25,
           ),
         ),
       ),

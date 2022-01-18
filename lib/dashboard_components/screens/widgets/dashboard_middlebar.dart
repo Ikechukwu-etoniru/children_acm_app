@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '/widget/dashboard_bottombar.dart';
-import '/widget/news_container.dart';
+import 'dashboard_bottombar.dart';
+import 'news_container.dart';
 
 class DashboardMiddlebar extends StatelessWidget {
   final double barHeight;

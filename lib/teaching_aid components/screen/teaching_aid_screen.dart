@@ -1,9 +1,10 @@
-import 'package:acm_diocese_of_calabar/screen/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '/screen/app_drawer.dart';
 import '/widget/appbar_trailing_icon.dart';
+import '/dashboard_components/screens/dashboard_screen.dart';
+import 'songs_screen.dart';
 
 class TeachingAidScreen extends StatelessWidget {
   static const routeName = 'teaching_aid_screen.dart';
@@ -31,61 +32,70 @@ class TeachingAidScreen extends StatelessWidget {
       required String title,
       required String subTitle,
       required int id,
-      required String imageName}) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-      height: 135,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        color: color,
-      ),
-      child: Stack(
-        children: [
-          Positioned(
-            right: 10,
-            bottom: 10,
-            child: SizedBox(
-              height: 97,
-              width: 97,
-              child: Image.asset(
-                imageName,
-                fit: BoxFit.cover,
-              ),
-            ),
+      required String imageName,
+      void Function()? onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: Hero(
+        tag: id,
+        child: Container(
+          margin: id.isOdd
+              ? const EdgeInsets.only(right: 10, left: 40, top: 10, bottom: 10)
+              : const EdgeInsets.only(right: 40, left: 10, top: 10, bottom: 10),
+          height: 135,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: color,
           ),
-          Positioned(
-            top: 20,
-            left: 30,
-            child: Text(
-              title,
-              style: TextStyle(
-                color: id == 2 || id == 3 ? Colors.brown : Colors.white,
-                fontWeight: FontWeight.w800,
-                fontSize: 27,
-                letterSpacing: 1,
-              ),
-            ),
-          ),
-          Positioned(
-            top: 60,
-            left: 20,
-            child: SizedBox(
-              width: 250,
-              height: 80,
-              child: Text(
-                subTitle,
-                style: TextStyle(
-                  fontFamily: 'Quicksand',
-                  color: id == 2 || id == 3 ? Colors.brown : Colors.white,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                  letterSpacing: 1,
+          child: Stack(
+            children: [
+              Positioned(
+                right: 10,
+                bottom: 10,
+                child: SizedBox(
+                  height: 97,
+                  width: 97,
+                  child: Image.asset(
+                    imageName,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
+              Positioned(
+                top: 20,
+                left: 30,
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: id == 2 || id == 3 ? Colors.brown : Colors.white,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 27,
+                    letterSpacing: 1,
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 60,
+                left: 20,
+                child: SizedBox(
+                  width: 250,
+                  height: 80,
+                  child: Text(
+                    subTitle,
+                    style: TextStyle(
+                      fontFamily: 'Quicksand',
+                      color: id == 2 || id == 3 ? Colors.brown : Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      letterSpacing: 1,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -201,7 +211,11 @@ class TeachingAidScreen extends StatelessWidget {
                     title: 'Song',
                     subTitle: 'When words fail, songs speak',
                     id: 1,
-                    imageName: 'images/song_icon.png'),
+                    imageName: 'images/song_icon.png',
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(TeachingAidSongs.routeName);
+                    }),
                 _teachingAidBlocks(
                     color: const Color(0xfffce9e1),
                     title: 'Story',

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '/widget/appbar_trailing_icon.dart';
 import '/screen/app_drawer.dart';
-import '/widget/dashboard_topbar.dart';
-import '/widget/dashboard_middlebar.dart';
+import 'widgets/dashboard_topbar.dart';
+import 'widgets/dashboard_middlebar.dart';
 
 class DashboardScreen extends StatelessWidget {
   DashboardScreen({Key? key}) : super(key: key);

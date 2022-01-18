@@ -1,16 +1,15 @@
-import 'package:acm_diocese_of_calabar/screen/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
-import '/widget/word_container.dart';
+import 'word_container.dart';
 
 class DashboardTopbar extends StatelessWidget {
   final double barHeight;
   DashboardTopbar(this.barHeight, {Key? key}) : super(key: key);
 
   final List<Color> _colorList = [
-    const Color(0xff40E0D0),
-    const Color(0xffFFC000),
-    const Color(0xffDA70D6)
+    const Color(0xff312c76),
+    const Color(0xfffde9e5),
+    const Color(0xff9897ae)
   ];
 
   @override

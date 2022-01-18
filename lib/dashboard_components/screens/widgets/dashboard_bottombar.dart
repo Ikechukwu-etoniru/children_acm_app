@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/screen/dashboard_screen.dart';
+import '../dashboard_screen.dart';
 
 class DashboardBottombar extends StatelessWidget {
   final double barHeight;
