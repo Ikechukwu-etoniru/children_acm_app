@@ -12,7 +12,7 @@ class DashboardMiddlebar extends StatelessWidget {
     return Container(
       height: barHeight,
       width: double.infinity,
-      color: Colors.grey.withOpacity(0.07),
+      color: Colors.transparent,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),

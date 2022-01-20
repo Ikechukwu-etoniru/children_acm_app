@@ -40,7 +40,7 @@ class TeachingAidScreen extends StatelessWidget {
         tag: id,
         child: Container(
           margin:
-              const EdgeInsets.only(right: 10, left: 10, top: 10, bottom: 10),
+              const EdgeInsets.only(right: 10, left: 10, top: 3, bottom: 3),
           height: 135,
           width: double.infinity,
           decoration: BoxDecoration(
@@ -104,7 +104,7 @@ class TeachingAidScreen extends StatelessWidget {
     return Scaffold(
       appBar: myAppbar,
       drawer: const AppDrawer(),
-      body: Column(
+      body: ListView(
         children: [
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -202,41 +202,33 @@ class TeachingAidScreen extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-            child: ListView(
-              children: [
-                _teachingAidBlocks(
-                    color: const Color(0xff312c76),
-                    title: 'Song',
-                    subTitle: 'When words fail, songs speak',
-                    id: 1,
-                    imageName: 'images/song_icon.png',
-                    onTap: () {
-                      Navigator.of(context)
-                          .pushNamed(TeachingAidSongs.routeName);
-                    }),
-                _teachingAidBlocks(
-                    color: const Color(0xfffce9e1),
-                    title: 'Story',
-                    subTitle: 'Every interesting story is a never ending story',
-                    id: 2,
-                    imageName: 'images/story_icon.png'),
-                _teachingAidBlocks(
-                    color: const Color(0xffffe8e7),
-                    title: 'Art Work',
-                    subTitle:
-                        'Art is not what you see, but what you make others see',
-                    id: 3,
-                    imageName: 'images/art_icon.png'),
-                _teachingAidBlocks(
-                    color: const Color(0xff9897ae),
-                    title: 'Object Lesson',
-                    subTitle: 'Objects that illustrate spiritual lessons',
-                    id: 4,
-                    imageName: 'images/object_lesson_icon.png')
-              ],
-            ),
-          )
+          _teachingAidBlocks(
+              color: const Color(0xff312c76),
+              title: 'Song',
+              subTitle: 'When words fail, songs speak',
+              id: 1,
+              imageName: 'images/song_icon.png',
+              onTap: () {
+                Navigator.of(context).pushNamed(TeachingAidSongs.routeName);
+              }),
+          _teachingAidBlocks(
+              color: const Color(0xfffce9e1),
+              title: 'Story',
+              subTitle: 'Every interesting story is a never ending story',
+              id: 2,
+              imageName: 'images/story_icon.png'),
+          _teachingAidBlocks(
+              color: const Color(0xffffe8e7),
+              title: 'Art Work',
+              subTitle: 'Art is not what you see, but what you make others see',
+              id: 3,
+              imageName: 'images/art_icon.png'),
+          _teachingAidBlocks(
+              color: const Color(0xff9897ae),
+              title: 'Object Lesson',
+              subTitle: 'Objects that illustrate spiritual lessons',
+              id: 4,
+              imageName: 'images/object_lesson_icon.png')
         ],
       ),
     );

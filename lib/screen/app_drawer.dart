@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../dashboard_components/screens/dashboard_screen.dart';
-import '../teaching_aid components/screen/teaching_aid_screen.dart';
+import '../teaching_aid_components/screen/teaching_aid_screen.dart';
 import '../training components/screens/training_screen.dart';
 
 class AppDrawer extends StatelessWidget {

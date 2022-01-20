@@ -54,9 +54,9 @@ class TrainingScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30),
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.grey.withOpacity(0.4),
-                      blurRadius: 3,
-                      spreadRadius: 5)
+                      color: Colors.grey.withOpacity(0.2),
+                      blurRadius: 1,
+                      spreadRadius: 3)
                 ]),
             child: Stack(
               children: [

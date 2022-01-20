@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'teaching_aid components/screen/songs_screen.dart';
-import 'teaching_aid components/screen/teaching_aid_screen.dart';
+import 'teaching_aid_components/screen/songs_screen.dart';
+import 'teaching_aid_components/screen/teaching_aid_screen.dart';
 import 'training components/screens/training_screen.dart';
 import 'dashboard_components/screens/dashboard_screen.dart';
 import '/provider/songs_provider.dart';
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         routes: {
           TrainingScreen.routeName: (ctx) => TrainingScreen(),
           TeachingAidScreen.routeName: (ctx) => TeachingAidScreen(),
-          TeachingAidSongs.routeName: (ctx) => const TeachingAidSongs()
+          TeachingAidSongs.routeName: (ctx) => TeachingAidSongs()
         },
       ),
     );

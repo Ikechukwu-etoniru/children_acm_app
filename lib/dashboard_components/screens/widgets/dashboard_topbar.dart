@@ -16,20 +16,19 @@ class DashboardTopbar extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: DashboardScreen.primaryColor,
-        boxShadow: [
-          BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              blurRadius: 3,
-              spreadRadius: 5,
-              offset: const Offset(1, 3))
-        ],
         gradient: RadialGradient(colors: [
           DashboardScreen.primaryColor.withOpacity(0.4),
           DashboardScreen.primaryColor.withOpacity(0.6),
           DashboardScreen.primaryColor.withOpacity(0.8),
           DashboardScreen.primaryColor
         ], center: Alignment.topCenter, radius: 1),
+        boxShadow: [BoxShadow(
+          color: Colors.grey.withOpacity(0.5),
+          offset: const Offset(0,10),
+          blurRadius: 20
+        )]
       ),
+      
       child: Row(children: [
         SizedBox(
           height: 160,
@@ -70,15 +69,16 @@ class DashboardTopbar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(40),
               ),
               child: FittedBox(
-                  child: Row(
-                children: const [
-                  Text(
-                    'Verse for today',
-                    style: TextStyle(color: Colors.brown),
-                  ),
-                  Icon(Icons.arrow_right_rounded)
-                ],
-              )),
+                child: Row(
+                  children: const [
+                    Text(
+                      'Verse for today',
+                      style: TextStyle(color: Colors.brown),
+                    ),
+                    Icon(Icons.arrow_right_rounded)
+                  ],
+                ),
+              ),
             )
           ],
         )
