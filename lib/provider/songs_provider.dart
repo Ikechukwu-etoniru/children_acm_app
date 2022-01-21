@@ -23,4 +23,12 @@ class SongProvider with ChangeNotifier {
   List<SongAid> get songList {
     return [..._songList];
   }
+
+  List<SongAid> filterByCategory(TaCategory category) {
+    return _songList.where((song) => song.category == category).toList();
+  }
+
+  List<SongAid> filterByCategories(List<TaCategory> cateList) {
+    return _songList.where((song) => cateList.contains(song.category)).toList();
+  }
 }
