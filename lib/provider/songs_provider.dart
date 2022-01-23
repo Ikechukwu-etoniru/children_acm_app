@@ -7,25 +7,24 @@ class SongProvider with ChangeNotifier {
         category: TaCategory.christmas,
         songUrl: 'welcome.com',
         title: 'All i want for christams',
-        id: '1'),
+        id: '1',
+        songLyrics: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr '),
     SongAid(
         category: TaCategory.faith,
         songUrl: 'welcome.com',
         title: 'All i want for christams',
-        id: '2'),
+        id: '2',
+        songLyrics: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr '),
     SongAid(
         category: TaCategory.easter,
         songUrl: 'welcome.com',
         title: 'All i want for christams',
-        id: '3'),
+        id: '3',
+        songLyrics: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr '),
   ];
 
   List<SongAid> get songList {
     return [..._songList];
-  }
-
-  List<SongAid> filterByCategory(TaCategory category) {
-    return _songList.where((song) => song.category == category).toList();
   }
 
   List<SongAid> filterByCategories(List<TaCategory> cateList) {

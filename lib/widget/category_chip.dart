@@ -42,17 +42,19 @@ class CategoryChip extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-              color: color.withOpacity(0.3),
+              color: color.withOpacity(0.2),
               blurRadius: 5,
               offset: const Offset(0, 5))
         ],
         borderRadius: BorderRadius.circular(20),
-        color: color.withOpacity(0.9),
+        color: color.withOpacity(0.7),
       ),
       child: Center(
         child: Text(
           text,
           style: const TextStyle(
+            letterSpacing: 1,
+            color: Colors.white,
               fontFamily: 'Quicksand',
               fontWeight: FontWeight.bold,
               fontSize: 12),

@@ -1,14 +1,14 @@
-import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/single_song_screen.dart';
-import 'package:acm_diocese_of_calabar/widget/image_chip.dart';
 import 'package:flutter/material.dart';
 
 import '/dashboard_components/screens/dashboard_screen.dart';
-import '/models/song.dart';
 import '/widget/category_chip.dart';
+import '/models/story.dart';
+import '/teaching_aid_components/screen/single_story_screen.dart';
+import '/widget/image_chip.dart';
 
-class SongListContainer extends StatelessWidget {
-  final SongAid song;
-  const SongListContainer(this.song, {Key? key}) : super(key: key);
+class StoryListContainer extends StatelessWidget {
+  final StoryAid story;
+  const StoryListContainer(this.story, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class SongListContainer extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-            child: ImageChip(song.category),
+            child: ImageChip(story.category),
           ),
           const SizedBox(
             width: 10,
@@ -44,7 +44,7 @@ class SongListContainer extends StatelessWidget {
                 SizedBox(
                   height: 30,
                   child: Text(
-                    song.title,
+                    story.title,
                     style: const TextStyle(
                         fontSize: 16, fontWeight: FontWeight.w700),
                   ),
@@ -52,8 +52,8 @@ class SongListContainer extends StatelessWidget {
                 const Spacer(),
                 CategoryChip(
                   height: 20,
-                  width: song.category.toString().substring(11).length * 12,
-                  text: song.category.toString().substring(11).toUpperCase(),
+                  width: story.category.toString().substring(11).length * 12,
+                  text: story.category.toString().substring(11).toUpperCase(),
                 ),
                 const SizedBox(height: 8),
               ],
@@ -64,7 +64,7 @@ class SongListContainer extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (ctx) {
-                    return SingleSongScreen(song);
+                    return SingleStoryScreen(story);
                   },
                 ),
               );

@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '/dashboard_components/screens/dashboard_screen.dart';
+import '/models/story.dart';
+import '/provider/story_provider.dart';
 import '/models/song.dart';
-import '/provider/songs_provider.dart';
-import '/teaching_aid_components/screen/widgets/song_list_container.dart';
+import '/teaching_aid_components/screen/widgets/story_list_container.dart';
 
-//Screen that will contain all songs in our teacher's aid song category
+//Screen that will contain all stories in our teacher's aid story category
 
 class TeachingAidSongs extends StatefulWidget {
-  static const routeName = '/songs.dart';
+  static const routeName = '/story.dart';
   const TeachingAidSongs({Key? key}) : super(key: key);
 
   @override
@@ -17,7 +18,7 @@ class TeachingAidSongs extends StatefulWidget {
 }
 
 class _TeachingAidSongsState extends State<TeachingAidSongs> {
-  final List<String> categoryList = [
+  final List<String> _categoryList = [
     'General',
     'Faith',
     'Love',
@@ -29,48 +30,42 @@ class _TeachingAidSongsState extends State<TeachingAidSongs> {
     'Forgiveness',
   ];
 
-  List<String> choosenCategoryList = [];
-
-  int selectedGrid = -1;
-
-  TaCategory? filterCatList;
-
-  List<TaCategory>? filterCatsList = [];
+  final List<TaCategory>? _filterCatsList = [];
 
   var _showCategoryBlock = false;
 
-  Set selectedItem = {};
+  final Set _selectedItem = {};
 
   void _applyFilters(Set selectedItems) {
-    for (var element in selectedItem) {
+    for (var element in _selectedItem) {
       if (element == 0) {
-        filterCatsList?.add(TaCategory.general);
+        _filterCatsList?.add(TaCategory.general);
       } else if (element == 1) {
-        filterCatsList?.add(TaCategory.faith);
+        _filterCatsList?.add(TaCategory.faith);
       } else if (element == 2) {
-        filterCatsList?.add(TaCategory.love);
+        _filterCatsList?.add(TaCategory.love);
       } else if (element == 3) {
-        filterCatsList?.add(TaCategory.christmas);
+        _filterCatsList?.add(TaCategory.christmas);
       } else if (element == 4) {
-        filterCatsList?.add(TaCategory.easter);
+        _filterCatsList?.add(TaCategory.easter);
       } else if (element == 5) {
-        filterCatsList?.add(TaCategory.fathers);
+        _filterCatsList?.add(TaCategory.fathers);
       } else if (element == 6) {
-        filterCatsList?.add(TaCategory.mothers);
+        _filterCatsList?.add(TaCategory.mothers);
       } else if (element == 7) {
-        filterCatsList?.add(TaCategory.repentance);
+        _filterCatsList?.add(TaCategory.repentance);
       } else if (element == 8) {
-        filterCatsList?.add(TaCategory.forgiveness);
+        _filterCatsList?.add(TaCategory.forgiveness);
       }
     }
   }
 
   void _selectedIndex(int index) {
     setState(() {
-      if (selectedItem.contains(index)) {
-        selectedItem.remove(index);
+      if (_selectedItem.contains(index)) {
+        _selectedItem.remove(index);
       } else {
-        selectedItem.add(index);
+        _selectedItem.add(index);
       }
     });
   }
@@ -80,10 +75,10 @@ class _TeachingAidSongsState extends State<TeachingAidSongs> {
     final dH = MediaQuery.of(context);
     final deviceHeight = dH.size.height - dH.padding.top;
     final deviceWidth = dH.size.width;
-    final List<SongAid> songList = filterCatsList!.isEmpty
-        ? Provider.of<SongProvider>(context).songList
-        : Provider.of<SongProvider>(context)
-            .filterByCategories(filterCatsList!);
+    final List<StoryAid> storyList = _filterCatsList!.isEmpty
+        ? Provider.of<StoryProvider>(context).storyList
+        : Provider.of<StoryProvider>(context)
+            .filterByCategories(_filterCatsList!);
 
     return Scaffold(
       appBar: AppBar(
@@ -171,7 +166,7 @@ class _TeachingAidSongsState extends State<TeachingAidSongs> {
                     child: GridView.builder(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 15, vertical: 10),
-                      itemCount: categoryList.length,
+                      itemCount: _categoryList.length,
                       gridDelegate:
                           const SliverGridDelegateWithMaxCrossAxisExtent(
                               maxCrossAxisExtent: 150,
@@ -188,16 +183,16 @@ class _TeachingAidSongsState extends State<TeachingAidSongs> {
                               borderRadius: BorderRadius.circular(40),
                               border: Border.all(
                                   color: DashboardScreen.primaryColor),
-                              color: selectedItem.contains(index)
+                              color: _selectedItem.contains(index)
                                   ? DashboardScreen.primaryColor
                                   : Colors.white),
                           child: Center(
                             child: FittedBox(
                               child: Text(
-                                categoryList[index],
+                                _categoryList[index],
                                 style: TextStyle(
                                     fontWeight: FontWeight.w800,
-                                    color: selectedItem.contains(index)
+                                    color: _selectedItem.contains(index)
                                         ? Colors.white
                                         : Colors.black),
                               ),
@@ -217,20 +212,20 @@ class _TeachingAidSongsState extends State<TeachingAidSongs> {
                         TextButton(
                           onPressed: () {
                             setState(() {
-                              selectedItem.clear();
+                              _selectedItem.clear();
                               _showCategoryBlock = false;
 
-                              filterCatsList!.clear();
+                              _filterCatsList!.clear();
                             });
                           },
                           child: const Text('Cancel'),
                         ),
                         const SizedBox(width: 10),
-                        if (selectedItem.isNotEmpty)
+                        if (_selectedItem.isNotEmpty)
                           InkWell(
                             onTap: () {
                               setState(() {
-                                selectedItem.clear();
+                                _selectedItem.clear();
                               });
                             },
                             child: Container(
@@ -249,7 +244,7 @@ class _TeachingAidSongsState extends State<TeachingAidSongs> {
                               ),
                             ),
                           ),
-                        if (selectedItem.isNotEmpty)
+                        if (_selectedItem.isNotEmpty)
                           const SizedBox(
                             width: 10,
                           ),
@@ -257,11 +252,11 @@ class _TeachingAidSongsState extends State<TeachingAidSongs> {
                             child: ElevatedButton(
                           onPressed: () {
                             setState(() {
-                              if (selectedItem.isEmpty) {
-                                filterCatsList!.clear();
+                              if (_selectedItem.isEmpty) {
+                                _filterCatsList!.clear();
                               }
 
-                              _applyFilters(selectedItem);
+                              _applyFilters(_selectedItem);
                               _showCategoryBlock = false;
                             });
                           },
@@ -275,9 +270,9 @@ class _TeachingAidSongsState extends State<TeachingAidSongs> {
             ),
           Expanded(
             child: ListView.builder(
-              itemCount: songList.length,
+              itemCount: storyList.length,
               itemBuilder: (context, index) =>
-                  SongListContainer(songList[index]),
+                  StoryListContainer(storyList[index]),
             ),
           ),
         ],

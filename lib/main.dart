@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         routes: {
           TrainingScreen.routeName: (ctx) => TrainingScreen(),
           TeachingAidScreen.routeName: (ctx) => TeachingAidScreen(),
-          TeachingAidSongs.routeName: (ctx) => TeachingAidSongs()
+          TeachingAidSongs.routeName: (ctx) => const TeachingAidSongs()
         },
       ),
     );

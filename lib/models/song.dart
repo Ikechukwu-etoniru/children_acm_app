@@ -15,10 +15,12 @@ class SongAid {
   final TaCategory category;
   final String title;
   final String songUrl;
+  final String songLyrics;
 
   SongAid(
       {required this.id,
       required this.title,
       required this.category,
-      required this.songUrl});
+      required this.songUrl,
+      required this.songLyrics});
 }

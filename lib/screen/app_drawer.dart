@@ -145,6 +145,7 @@ class AppDrawer extends StatelessWidget {
             _drawerList(FontAwesomeIcons.buffer, 'ACM Glossary', context, 5),
             _drawerList(
                 FontAwesomeIcons.university, 'Teaching Aids', context, 6),
+            _drawerList(FontAwesomeIcons.search, 'Search', context, 7),
             const SizedBox(height: 15),
             Expanded(
               child: Container(
