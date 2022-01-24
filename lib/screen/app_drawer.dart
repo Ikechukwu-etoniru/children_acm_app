@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../dashboard_components/screens/dashboard_screen.dart';
 import '../teaching_aid_components/screen/teaching_aid_screen.dart';
-import '../training components/screens/training_screen.dart';
+import '/training_components/screens/training_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -120,7 +120,7 @@ class AppDrawer extends StatelessWidget {
                   left: 20,
                   child: Text(
                     'Leroy Etoniru',
-                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 23),
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 23),
                   ),
                 ),
                 const Positioned(
@@ -129,6 +129,7 @@ class AppDrawer extends StatelessWidget {
                   child: Text(
                     'Grade - Level 0',
                     style: TextStyle(
+                        fontWeight: FontWeight.w700,
                         fontFamily: 'Quicksand',
                         fontSize: 15,
                         color: DashboardScreen.primaryColor),

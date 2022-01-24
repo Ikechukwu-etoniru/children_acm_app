@@ -50,8 +50,8 @@ class DashboardTopbar extends StatelessWidget {
               child: const Text(
                 'Grow in Christ everyday',
                 style: TextStyle(
-                    fontWeight: FontWeight.w900,
-                    fontSize: 22,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 20,
                     wordSpacing: 1,
                     color: Colors.white),
               ),

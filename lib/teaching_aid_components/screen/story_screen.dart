@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '/dashboard_components/screens/dashboard_screen.dart';
@@ -9,15 +10,15 @@ import '/teaching_aid_components/screen/widgets/story_list_container.dart';
 
 //Screen that will contain all stories in our teacher's aid story category
 
-class TeachingAidSongs extends StatefulWidget {
+class TeachingAidStory extends StatefulWidget {
   static const routeName = '/story.dart';
-  const TeachingAidSongs({Key? key}) : super(key: key);
+  const TeachingAidStory({Key? key}) : super(key: key);
 
   @override
-  State<TeachingAidSongs> createState() => _TeachingAidSongsState();
+  State<TeachingAidStory> createState() => _TeachingAidStoryState();
 }
 
-class _TeachingAidSongsState extends State<TeachingAidSongs> {
+class _TeachingAidStoryState extends State<TeachingAidStory> {
   final List<String> _categoryList = [
     'General',
     'Faith',
@@ -83,7 +84,7 @@ class _TeachingAidSongsState extends State<TeachingAidSongs> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Song List',
+          'Story List',
           style: TextStyle(
               color: Colors.black, fontWeight: FontWeight.w600, fontSize: 20),
         ),
@@ -140,12 +141,10 @@ class _TeachingAidSongsState extends State<TeachingAidSongs> {
                     margin: const EdgeInsets.only(left: 5, right: 20),
                     height: 35,
                     width: 35,
-                    decoration: BoxDecoration(
-                      color: DashboardScreen.primaryColor.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(10),
+                    child: const Center(
+                      child: FaIcon(FontAwesomeIcons.slidersH,
+                          color: DashboardScreen.primaryColor),
                     ),
-                    child: const Icon(Icons.menu,
-                        color: DashboardScreen.primaryColor),
                   ),
                   onTap: () {
                     setState(() {

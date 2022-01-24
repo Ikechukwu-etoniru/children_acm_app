@@ -20,7 +20,7 @@ class DashboardScreen extends StatelessWidget {
         icon: const Icon(
           Icons.menu_open_rounded,
           color: Colors.black,
-          size: 25,
+          size: 30,
         ),
       );
     }),

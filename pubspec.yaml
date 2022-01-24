@@ -67,7 +67,7 @@ flutter:
     - images/story_icon.png
     - images/object_lesson_icon.png
     - images/happy_girl.png
-    - images/training_icon.png
+    - images/training_pic.png
     - images/leaf_pic1.png
     - images/dove_pic.png
     - images/easter_pic.png
@@ -90,11 +90,11 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Lato
+    - family: Poppins
       fonts:
-        - asset: fonts/Lato-Regular.ttf
-        - asset: fonts/Lato-Light.ttf
-        - asset: fonts/Lato-Bold.ttf          
+        - asset: fonts/Poppins-Regular.ttf
+        - asset: fonts/Poppins-Light.ttf
+        - asset: fonts/Poppins-Bold.ttf          
     - family: Quicksand
       fonts:
         - asset: fonts/Quicksand-Regular.ttf

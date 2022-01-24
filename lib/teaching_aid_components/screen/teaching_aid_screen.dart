@@ -5,6 +5,7 @@ import '/screen/app_drawer.dart';
 import '/widget/appbar_trailing_icon.dart';
 import '/dashboard_components/screens/dashboard_screen.dart';
 import 'songs_screen.dart';
+import '/teaching_aid_components/screen/story_screen.dart';
 
 class TeachingAidScreen extends StatelessWidget {
   static const routeName = 'teaching_aid_screen.dart';
@@ -33,16 +34,20 @@ class TeachingAidScreen extends StatelessWidget {
       required String subTitle,
       required int id,
       required String imageName,
+      double? deviceHeight,
+      double? deviceWidth,
       void Function()? onTap}) {
+    final height = deviceHeight! * 0.18;
+    final width = deviceWidth! * 0.9;
     return InkWell(
       onTap: onTap,
       child: Hero(
         tag: id,
         child: Container(
           margin:
-              const EdgeInsets.only(right: 10, left: 10, top: 3, bottom: 3),
-          height: 135,
-          width: double.infinity,
+              const EdgeInsets.only(right: 10, left: 10, top: 3, bottom: 10),
+          height: height,
+          width: width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             color: color,
@@ -53,8 +58,8 @@ class TeachingAidScreen extends StatelessWidget {
                 right: 10,
                 bottom: 10,
                 child: SizedBox(
-                  height: 97,
-                  width: 97,
+                  height: height * 0.67,
+                  width: width * 0.27,
                   child: Image.asset(
                     imageName,
                     fit: BoxFit.cover,
@@ -78,8 +83,8 @@ class TeachingAidScreen extends StatelessWidget {
                 top: 60,
                 left: 20,
                 child: SizedBox(
-                  width: 250,
-                  height: 80,
+                  width: width * 0.65,
+                  height: height * 0.58,
                   child: Text(
                     subTitle,
                     style: TextStyle(
@@ -101,6 +106,11 @@ class TeachingAidScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceHeight = MediaQuery.of(context).size.height;
+    final deviceWidth = MediaQuery.of(context).size.width;
+    final tbHeight = deviceHeight * 0.25;
+    final tbWidth = deviceWidth * 0.9;
+
     return Scaffold(
       appBar: myAppbar,
       drawer: const AppDrawer(),
@@ -108,8 +118,8 @@ class TeachingAidScreen extends StatelessWidget {
         children: [
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            height: 200,
-            width: double.infinity,
+            height: tbHeight,
+            width: tbWidth,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: const Color(0xfffde9e5),
@@ -127,8 +137,8 @@ class TeachingAidScreen extends StatelessWidget {
                   right: -25,
                   bottom: 15,
                   child: SizedBox(
-                    height: 150,
-                    width: 130,
+                    height: tbHeight * 0.76,
+                    width: tbWidth * 0.37,
                     child: Image.asset(
                       'images/featured_icon.png',
                       fit: BoxFit.cover,
@@ -136,7 +146,7 @@ class TeachingAidScreen extends StatelessWidget {
                   ),
                 ),
                 const Positioned(
-                  top: 30,
+                  top: 40,
                   left: 20,
                   child: Text(
                     'Teaching Aids',
@@ -148,13 +158,13 @@ class TeachingAidScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Positioned(
+                Positioned(
                   top: 80,
                   left: 20,
                   child: SizedBox(
-                    width: 250,
-                    height: 80,
-                    child: Text(
+                    width: tbWidth * 0.69,
+                    height: tbHeight * 0.41,
+                    child: const Text(
                       'Learn visual aids that will help grab your children\'s attention',
                       style: TextStyle(
                         fontFamily: 'Quicksand',
@@ -208,6 +218,8 @@ class TeachingAidScreen extends StatelessWidget {
               subTitle: 'When words fail, songs speak',
               id: 1,
               imageName: 'images/song_icon.png',
+              deviceHeight: deviceHeight,
+              deviceWidth: deviceWidth,
               onTap: () {
                 Navigator.of(context).pushNamed(TeachingAidSongs.routeName);
               }),
@@ -216,19 +228,28 @@ class TeachingAidScreen extends StatelessWidget {
               title: 'Story',
               subTitle: 'Every interesting story is a never ending story',
               id: 2,
-              imageName: 'images/story_icon.png'),
+              imageName: 'images/story_icon.png',
+              deviceHeight: deviceHeight,
+              deviceWidth: deviceWidth,
+              onTap: () {
+                Navigator.of(context).pushNamed(TeachingAidStory.routeName);
+              }),
           _teachingAidBlocks(
               color: const Color(0xffffe8e7),
               title: 'Art Work',
               subTitle: 'Art is not what you see, but what you make others see',
               id: 3,
-              imageName: 'images/art_icon.png'),
+              imageName: 'images/art_icon.png',
+              deviceHeight: deviceHeight,
+              deviceWidth: deviceWidth),
           _teachingAidBlocks(
               color: const Color(0xff9897ae),
               title: 'Object Lesson',
               subTitle: 'Objects that illustrate spiritual lessons',
               id: 4,
-              imageName: 'images/object_lesson_icon.png')
+              imageName: 'images/object_lesson_icon.png',
+              deviceHeight: deviceHeight,
+              deviceWidth: deviceWidth)
         ],
       ),
     );
