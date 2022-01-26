@@ -1,11 +1,12 @@
+import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/teaching_aid_songs.dart';
+import 'package:acm_diocese_of_calabar/widget/animation_container.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '/screen/app_drawer.dart';
 import '/widget/appbar_trailing_icon.dart';
 import '/dashboard_components/screens/dashboard_screen.dart';
-import 'songs_screen.dart';
-import '/teaching_aid_components/screen/story_screen.dart';
+
 
 class TeachingAidScreen extends StatelessWidget {
   static const routeName = 'teaching_aid_screen.dart';
@@ -19,7 +20,7 @@ class TeachingAidScreen extends StatelessWidget {
         icon: const Icon(
           Icons.menu_open_rounded,
           color: Colors.black,
-          size: 25,
+          size: 30,
         ),
       );
     }),
@@ -49,6 +50,20 @@ class TeachingAidScreen extends StatelessWidget {
           height: height,
           width: width,
           decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: color.withOpacity(0.5),
+                spreadRadius: 2,
+                blurRadius: 7,
+                offset: const Offset(5, 5),
+              ),
+              BoxShadow(
+                color: color.withOpacity(0.2),
+                spreadRadius: 2,
+                blurRadius: 20,
+                offset: const Offset(-5, 5),
+              )
+            ],
             borderRadius: BorderRadius.circular(30),
             color: color,
           ),
@@ -68,13 +83,13 @@ class TeachingAidScreen extends StatelessWidget {
               ),
               Positioned(
                 top: 20,
-                left: 30,
+                left: 20,
                 child: Text(
                   title,
                   style: TextStyle(
                     color: id == 2 || id == 3 ? Colors.brown : Colors.white,
                     fontWeight: FontWeight.w800,
-                    fontSize: 27,
+                    fontSize: 23,
                     letterSpacing: 1,
                   ),
                 ),
@@ -91,7 +106,7 @@ class TeachingAidScreen extends StatelessWidget {
                       fontFamily: 'Quicksand',
                       color: id == 2 || id == 3 ? Colors.brown : Colors.white,
                       fontWeight: FontWeight.w600,
-                      fontSize: 16,
+                      fontSize: 14,
                       letterSpacing: 1,
                     ),
                   ),
@@ -117,18 +132,24 @@ class TeachingAidScreen extends StatelessWidget {
       body: ListView(
         children: [
           Container(
-            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            margin: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
             height: tbHeight,
             width: tbWidth,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: const Color(0xfffde9e5),
-                boxShadow: const [
+                boxShadow: [
                   BoxShadow(
-                    color: Color(0xfffde9e5),
-                    blurRadius: 1,
+                    color: const Color(0xfffde9e5).withOpacity(0.5),
+                    blurRadius: 10,
                     spreadRadius: 2,
-                    offset: Offset(1, 1),
+                    offset: const Offset(5, 5),
+                  ),
+                  BoxShadow(
+                    color: const Color(0xfffde9e5).withOpacity(0.5),
+                    blurRadius: 20,
+                    spreadRadius: 2,
+                    offset: const Offset(-5, 5),
                   )
                 ]),
             child: Stack(
@@ -178,7 +199,7 @@ class TeachingAidScreen extends StatelessWidget {
                 ),
                 Positioned(
                     left: 30,
-                    bottom: 10,
+                    bottom: 25,
                     child: Container(
                       height: 35,
                       width: 200,
@@ -212,17 +233,22 @@ class TeachingAidScreen extends StatelessWidget {
               ],
             ),
           ),
-          _teachingAidBlocks(
-              color: const Color(0xff312c76),
-              title: 'Song',
-              subTitle: 'When words fail, songs speak',
-              id: 1,
-              imageName: 'images/song_icon.png',
-              deviceHeight: deviceHeight,
-              deviceWidth: deviceWidth,
-              onTap: () {
-                Navigator.of(context).pushNamed(TeachingAidSongs.routeName);
-              }),
+          const SizedBox(height: 12),
+
+          AnimationContainer(
+            routeName: TeachingAidSongScreen.routeName,
+          )
+          // _teachingAidBlocks(
+          //     color: const Color(0xff312c76),
+          //     title: 'Song',
+          //     subTitle: 'When words fail, songs speak',
+          //     id: 1,
+          //     imageName: 'images/song_icon.png',
+          //     deviceHeight: deviceHeight,
+          //     deviceWidth: deviceWidth,
+          //     onTap: () {
+          //       // Navigator.of(context).pushNamed(TeachingAidSongs.routeName);
+          //     }),
           _teachingAidBlocks(
               color: const Color(0xfffce9e1),
               title: 'Story',
@@ -232,7 +258,7 @@ class TeachingAidScreen extends StatelessWidget {
               deviceHeight: deviceHeight,
               deviceWidth: deviceWidth,
               onTap: () {
-                Navigator.of(context).pushNamed(TeachingAidStory.routeName);
+                // Navigator.of(context).pushNamed(TeachingAidStory.routeName);
               }),
           _teachingAidBlocks(
               color: const Color(0xffffe8e7),

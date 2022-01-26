@@ -20,7 +20,7 @@ class TrainingBlock extends StatelessWidget {
             color: Colors.grey.withOpacity(0.1),
             spreadRadius: 1,
             blurRadius: 15,
-            offset: const Offset(1, 5),
+            offset: const Offset(0, 5),
           )
         ],
       ),

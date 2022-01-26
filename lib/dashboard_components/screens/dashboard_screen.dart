@@ -11,6 +11,19 @@ class DashboardScreen extends StatelessWidget {
   DashboardScreen({Key? key}) : super(key: key);
   static const primaryColor = Color(0xff00FF7F);
 
+  static const categoryList = [
+    'All Songs',
+    'General',
+    'Faith',
+    'Love',
+    'Christmas',
+    'Easter',
+    'Father\'s Day',
+    'Mother\'s Day',
+    'Repentance',
+    'Forgiveness',
+  ];
+
   final myAppbar = AppBar(
     leading: Builder(builder: (context) {
       return IconButton(
@@ -82,7 +95,9 @@ class DashboardScreen extends StatelessWidget {
             ),
           ),
           DashboardBottombar(deviceHeight * 0.6),
-          const SizedBox(height: 100,)
+          const SizedBox(
+            height: 100,
+          )
         ],
       ),
     );

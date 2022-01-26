@@ -1,3 +1,4 @@
+import 'package:acm_diocese_of_calabar/training_components/screens/training_courses_screen.dart';
 import 'package:flutter/material.dart';
 
 import '/screen/app_drawer.dart';
@@ -49,21 +50,27 @@ class TrainingScreen extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 20),
             height: deviceHeight * 0.1,
             child: Row(children: [
-                const Text(
-                  'Courses',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 25),
+              const Text(
+                'Courses',
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 25),
+              ),
+              const Spacer(),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .pushNamed(TrainingCoursesScreen.routeName);
+                },
+                child: const Text(
+                  'See all',
+                  style: TextStyle(fontSize: 15),
                 ),
-                const Spacer(),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'See all',
-                    style: TextStyle(fontSize: 15),
-                  ),
-                )
-              ]),
+              )
+            ]),
           ),
-          TrainingScreenBottombar()
+          TrainingScreenBottombar(deviceHeight),
+          SizedBox(
+            height: deviceHeight * 0.1,
+          )
         ],
       ),
     );

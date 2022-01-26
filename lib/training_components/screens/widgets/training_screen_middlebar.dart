@@ -50,26 +50,34 @@ class TrainingScreenMiddlebar extends StatelessWidget {
             ),
           ),
           Positioned(
-              right: -80,
-              child: Container(
-                height: deviceHeight * 0.4,
-                width: deviceHeight * 0.4,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.green.withOpacity(0.4),
-                ),
-              )),
+            right: -13,
+            bottom: 10,
+            child: SizedBox(
+              height: 160,
+              width: 160,
+              child: Image.asset(
+                'images/training_pic.png',
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
           Positioned(
-              right: -13,
-              bottom: 10,
-              child: SizedBox(
-                height: 180,
-                width: 180,
-                child: Image.asset(
-                  'images/training_pic.png',
-                  fit: BoxFit.fill,
+            top: 15,
+            left: 5,
+            child: SizedBox(
+              height: (deviceHeight * 0.3) * 0.5,
+              width: 180,
+              child: const Center(
+                child: Text(
+                  '',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700),
                 ),
-              ))
+              ),
+            ),
+          )
         ],
       ),
     );
