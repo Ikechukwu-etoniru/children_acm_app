@@ -36,13 +36,17 @@ class _AnimationContainerState extends State<AnimationContainer> {
         });
         Future.delayed(const Duration(milliseconds: 100), () {
           Navigator.of(context).pushNamed(widget.routeName!);
+        }).then((value) {
+          setState(() {
+            _onTapped = false;
+          });
         });
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 50),
         margin: const EdgeInsets.only(right: 10, left: 10, top: 3, bottom: 10),
-        height: !_onTapped ? widget.height : widget.height! + 15,
-        width: !_onTapped ? widget.width : widget.width! + 15,
+        height: !_onTapped ? widget.height : widget.height! + 10,
+        width: !_onTapped ? widget.width : widget.width! + 20,
         decoration: BoxDecoration(
             boxShadow: _onTapped
                 ? [

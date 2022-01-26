@@ -7,7 +7,6 @@ import '/screen/app_drawer.dart';
 import '/widget/appbar_trailing_icon.dart';
 import '/dashboard_components/screens/dashboard_screen.dart';
 
-
 class TeachingAidScreen extends StatelessWidget {
   static const routeName = 'teaching_aid_screen.dart';
   TeachingAidScreen({Key? key}) : super(key: key);
@@ -28,96 +27,6 @@ class TeachingAidScreen extends StatelessWidget {
     elevation: 0,
     actions: const [AppbarTrailingIcon()],
   );
-
-  Widget _teachingAidBlocks(
-      {required Color color,
-      required String title,
-      required String subTitle,
-      required int id,
-      required String imageName,
-      double? deviceHeight,
-      double? deviceWidth,
-      void Function()? onTap}) {
-    final height = deviceHeight! * 0.18;
-    final width = deviceWidth! * 0.9;
-    return InkWell(
-      onTap: onTap,
-      child: Hero(
-        tag: id,
-        child: Container(
-          margin:
-              const EdgeInsets.only(right: 10, left: 10, top: 3, bottom: 10),
-          height: height,
-          width: width,
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: color.withOpacity(0.5),
-                spreadRadius: 2,
-                blurRadius: 7,
-                offset: const Offset(5, 5),
-              ),
-              BoxShadow(
-                color: color.withOpacity(0.2),
-                spreadRadius: 2,
-                blurRadius: 20,
-                offset: const Offset(-5, 5),
-              )
-            ],
-            borderRadius: BorderRadius.circular(30),
-            color: color,
-          ),
-          child: Stack(
-            children: [
-              Positioned(
-                right: 10,
-                bottom: 10,
-                child: SizedBox(
-                  height: height * 0.67,
-                  width: width * 0.27,
-                  child: Image.asset(
-                    imageName,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 20,
-                left: 20,
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    color: id == 2 || id == 3 ? Colors.brown : Colors.white,
-                    fontWeight: FontWeight.w800,
-                    fontSize: 23,
-                    letterSpacing: 1,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 60,
-                left: 20,
-                child: SizedBox(
-                  width: width * 0.65,
-                  height: height * 0.58,
-                  child: Text(
-                    subTitle,
-                    style: TextStyle(
-                      fontFamily: 'Quicksand',
-                      color: id == 2 || id == 3 ? Colors.brown : Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14,
-                      letterSpacing: 1,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -155,11 +64,11 @@ class TeachingAidScreen extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned(
-                  right: -25,
+                  right: -15,
                   bottom: 15,
                   child: SizedBox(
-                    height: tbHeight * 0.76,
-                    width: tbWidth * 0.37,
+                    height: tbHeight * 0.70,
+                    width: tbWidth * 0.33,
                     child: Image.asset(
                       'images/featured_icon.png',
                       fit: BoxFit.cover,
@@ -234,48 +143,42 @@ class TeachingAidScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-
           AnimationContainer(
-            routeName: TeachingAidSongScreen.routeName,
-          )
-          // _teachingAidBlocks(
-          //     color: const Color(0xff312c76),
-          //     title: 'Song',
-          //     subTitle: 'When words fail, songs speak',
-          //     id: 1,
-          //     imageName: 'images/song_icon.png',
-          //     deviceHeight: deviceHeight,
-          //     deviceWidth: deviceWidth,
-          //     onTap: () {
-          //       // Navigator.of(context).pushNamed(TeachingAidSongs.routeName);
-          //     }),
-          _teachingAidBlocks(
+              routeName: TeachingAidSongScreen.routeName,
+              color: const Color(0xff312c76),
+              height: deviceHeight * 0.18,
+              width: deviceWidth * 0.9,
+              title: 'Song',
+              subTitle: 'When words fail, songs speak',
+              id: 1,
+              imageName: 'images/song_icon.png'),
+          AnimationContainer(
+              routeName: TeachingAidSongScreen.routeName,
               color: const Color(0xfffce9e1),
+              height: deviceHeight * 0.18,
+              width: deviceWidth * 0.9,
               title: 'Story',
               subTitle: 'Every interesting story is a never ending story',
               id: 2,
-              imageName: 'images/story_icon.png',
-              deviceHeight: deviceHeight,
-              deviceWidth: deviceWidth,
-              onTap: () {
-                // Navigator.of(context).pushNamed(TeachingAidStory.routeName);
-              }),
-          _teachingAidBlocks(
+              imageName: 'images/story_icon.png'),
+          AnimationContainer(
+              routeName: TeachingAidSongScreen.routeName,
               color: const Color(0xffffe8e7),
+              height: deviceHeight * 0.18,
+              width: deviceWidth * 0.9,
               title: 'Art Work',
               subTitle: 'Art is not what you see, but what you make others see',
               id: 3,
-              imageName: 'images/art_icon.png',
-              deviceHeight: deviceHeight,
-              deviceWidth: deviceWidth),
-          _teachingAidBlocks(
+              imageName: 'images/art_icon.png'),
+          AnimationContainer(
+              routeName: TeachingAidSongScreen.routeName,
               color: const Color(0xff9897ae),
+              height: deviceHeight * 0.18,
+              width: deviceWidth * 0.9,
               title: 'Object Lesson',
               subTitle: 'Objects that illustrate spiritual lessons',
               id: 4,
-              imageName: 'images/object_lesson_icon.png',
-              deviceHeight: deviceHeight,
-              deviceWidth: deviceWidth)
+              imageName: 'images/object_lesson_icon.png'),
         ],
       ),
     );

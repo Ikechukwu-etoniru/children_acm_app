@@ -62,7 +62,7 @@ class DashboardScreen extends StatelessWidget {
                   'Children News',
                   style: TextStyle(
                       fontSize: 16,
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.w700,
                       letterSpacing: 1),
                 ),
                 const Spacer(),
@@ -80,7 +80,7 @@ class DashboardScreen extends StatelessWidget {
                   'Popular Teaching Aid',
                   style: TextStyle(
                       fontSize: 16,
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.w700,
                       letterSpacing: 1),
                 ),
                 const Spacer(),

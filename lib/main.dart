@@ -1,13 +1,14 @@
-import 'package:acm_diocese_of_calabar/provider/courses_provider.dart';
-import 'package:acm_diocese_of_calabar/training_components/screens/training_courses_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'teaching_aid_components/screen/teaching_aid_screen.dart';
+import 'teaching_aid_components/screen/teaching_aid_songs.dart';
 import 'training_components/screens/training_screen.dart';
 import 'dashboard_components/screens/dashboard_screen.dart';
 import '/provider/songs_provider.dart';
 import '/provider/story_provider.dart';
+import '/provider/courses_provider.dart';
+import '/training_components/screens/training_courses_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,7 +39,9 @@ class MyApp extends StatelessWidget {
           TrainingScreen.routeName: (ctx) => TrainingScreen(),
           TeachingAidScreen.routeName: (ctx) => TeachingAidScreen(),
           TrainingCoursesScreen.routeName: (ctx) =>
-              const TrainingCoursesScreen()
+              const TrainingCoursesScreen(),
+          TeachingAidSongScreen.routeName: (ctx) =>
+              const TeachingAidSongScreen()
         },
       ),
     );

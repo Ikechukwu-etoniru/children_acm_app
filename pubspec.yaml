@@ -67,15 +67,15 @@ flutter:
     - images/story_icon.png
     - images/object_lesson_icon.png
     - images/happy_girl.png
-    - images/training_pic.png
-    - images/leaf_pic1.png
-    - images/dove_pic.png
-    - images/easter_pic.png
+    - images/all_pic.png
+    - images/bible_pic.png
+    - images/fathers_pic.png
     - images/faith_pic.png
-    - images/christmas_pic.png
-    - images/giving_hand.png
-    - images/open_bible.png
-    - images/praying_hand.png
+    - images/christmass_pic.png
+    - images/general_pic.png
+    - images/mothers_pic.png
+    - images/leaf_pic1.png
+    - images/training_pic.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
