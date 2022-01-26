@@ -1,4 +1,6 @@
+import 'package:acm_diocese_of_calabar/provider/songs_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '/dashboard_components/screens/dashboard_screen.dart';
 import '/teaching_aid_components/screen/widgets/category_animation.dart';
@@ -10,7 +12,6 @@ class TeachingAidSongScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
-    final deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -39,6 +40,10 @@ class TeachingAidSongScreen extends StatelessWidget {
         itemBuilder: (context, index) => CategoryAnimationContainer(
           color: const Color(0xff312c76),
           height: deviceHeight * 0.2,
+          category: DashboardScreen.categoryList[index],
+          taType: 'Songs',
+          amount: Provider.of<SongProvider>(context)
+              .numberPerCategory(DashboardScreen.categoryList[index]),
         ),
       ),
     );

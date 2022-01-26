@@ -27,7 +27,39 @@ class SongProvider with ChangeNotifier {
     return [..._songList];
   }
 
-  List<SongAid> filterByCategories(List<TaCategory> cateList) {
-    return _songList.where((song) => cateList.contains(song.category)).toList();
+  List<SongAid> songsByCategory(String categ) {
+    if (categ == 'All') {
+      return _songList;
+    }
+    TaCategory category = categ == 'Faith'
+        ? TaCategory.faith
+        : categ == 'General'
+            ? TaCategory.general
+            : categ == 'Christmas'
+                ? TaCategory.christmas
+                : categ == 'Love'
+                    ? TaCategory.love
+                    : categ == 'Easter'
+                        ? TaCategory.easter
+                        : categ == 'Father\'s Day'
+                            ? TaCategory.fathers
+                            : categ == 'Mother\'s Day'
+                                ? TaCategory.mothers
+                                : categ == 'Repentance'
+                                    ? TaCategory.repentance
+                                    : categ == 'Forgiveness'
+                                        ? TaCategory.forgiveness
+                                        : TaCategory.general;
+    return _songList.where((element) => element.category == category).toList();
+  }
+
+  int numberPerCategory(String cate) {
+    if (cate == 'All') {
+      return _songList.length;
+    }
+    return _songList
+        .where((song) => song.category.toString().contains(cate.toLowerCase()))
+        .toList()
+        .length;
   }
 }

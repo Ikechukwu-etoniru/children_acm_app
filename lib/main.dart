@@ -1,3 +1,4 @@
+import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/single_song_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -41,7 +42,8 @@ class MyApp extends StatelessWidget {
           TrainingCoursesScreen.routeName: (ctx) =>
               const TrainingCoursesScreen(),
           TeachingAidSongScreen.routeName: (ctx) =>
-              const TeachingAidSongScreen()
+              const TeachingAidSongScreen(),
+          SingleSongScreen.routeName: (ctx) => const SingleSongScreen()
         },
       ),
     );

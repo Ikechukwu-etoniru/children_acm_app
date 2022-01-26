@@ -12,7 +12,7 @@ class DashboardScreen extends StatelessWidget {
   static const primaryColor = Color(0xff00FF7F);
 
   static const categoryList = [
-    'All Songs',
+    'All',
     'General',
     'Faith',
     'Love',

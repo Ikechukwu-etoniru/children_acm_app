@@ -65,7 +65,7 @@ class TeachingAidScreen extends StatelessWidget {
               children: [
                 Positioned(
                   right: -15,
-                  bottom: 15,
+                  bottom: tbHeight * 0.07,
                   child: SizedBox(
                     height: tbHeight * 0.70,
                     width: tbWidth * 0.33,
@@ -75,10 +75,10 @@ class TeachingAidScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Positioned(
-                  top: 40,
-                  left: 20,
-                  child: Text(
+                Positioned(
+                  top: tbHeight * 0.2,
+                  left: tbWidth * 0.06,
+                  child: const Text(
                     'Teaching Aids',
                     style: TextStyle(
                       color: Colors.brown,
@@ -89,8 +89,8 @@ class TeachingAidScreen extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 80,
-                  left: 20,
+                  top: tbHeight * 0.41,
+                  left: tbWidth * 0.06,
                   child: SizedBox(
                     width: tbWidth * 0.69,
                     height: tbHeight * 0.41,
@@ -107,8 +107,8 @@ class TeachingAidScreen extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                    left: 30,
-                    bottom: 25,
+                    left: tbWidth * 0.084,
+                    bottom: tbHeight * 0.08,
                     child: Container(
                       height: 35,
                       width: 200,

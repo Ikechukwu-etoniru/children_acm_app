@@ -1,10 +1,19 @@
+import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/song_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class CategoryAnimationContainer extends StatefulWidget {
   final double height;
   final Color color;
+  final String category;
+  final String taType;
+  final int amount;
   const CategoryAnimationContainer(
-      {required this.height, required this.color, Key? key})
+      {required this.height,
+      required this.color,
+      required this.category,
+      required this.taType,
+      required this.amount,
+      Key? key})
       : super(key: key);
 
   @override
@@ -15,6 +24,32 @@ class CategoryAnimationContainer extends StatefulWidget {
 class _CategoryAnimationContainerState
     extends State<CategoryAnimationContainer> {
   var _onTappped = false;
+  String get imageName {
+    if (widget.category == 'All') {
+      return 'images/all_pic.png';
+    } else if (widget.category == 'General') {
+      return 'images/general_pic.png';
+    } else if (widget.category == 'Faith') {
+      return 'images/faith_pic.png';
+    } else if (widget.category == 'Love') {
+      return 'images/christmass_pic.png';
+    } else if (widget.category == 'Christmas') {
+      return 'images/christmass_pic.png';
+    } else if (widget.category == 'Easter') {
+      return 'images/faith_pic.png';
+    } else if (widget.category == 'Father\'s Day') {
+      return 'images/fathers_pic.png';
+    } else if (widget.category == 'Mother\'s Day') {
+      return 'images/mothers_pic.png';
+    } else if (widget.category == 'Repentance') {
+      return 'images/bible_pic.png';
+    } else if (widget.category == 'Forgiveness') {
+      return 'images/faith_pic.png';
+    } else {
+      return 'images/general_pic.png';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -22,7 +57,13 @@ class _CategoryAnimationContainerState
         setState(() {
           _onTappped = true;
         });
-        Future.delayed(const Duration(milliseconds: 100), () {}).then((value) {
+        Future.delayed(const Duration(milliseconds: 100), () {
+          if (widget.taType == 'Songs') {
+            Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+              return SongListScreen(taCategory: widget.category);
+            }));
+          }
+        }).then((value) {
           setState(() {
             _onTappped = false;
           });
@@ -35,9 +76,31 @@ class _CategoryAnimationContainerState
             : const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         height: !_onTappped ? widget.height : widget.height + 10,
         decoration: BoxDecoration(
-            color: widget.color.withOpacity(0.5),
+            color: widget.color.withOpacity(0.1),
             borderRadius: BorderRadius.circular(20),
-            boxShadow: _onTappped ? [] : []),
+            boxShadow: _onTappped
+                ? [
+                    BoxShadow(
+                      color: Colors.yellow.withOpacity(0.4),
+                      spreadRadius: 3,
+                      blurRadius: 10,
+                      offset: const Offset(1, 8),
+                    ),
+                    BoxShadow(
+                      color: Colors.yellow.withOpacity(0.2),
+                      spreadRadius: 5,
+                      blurRadius: 20,
+                      offset: const Offset(1, 29),
+                    ),
+                  ]
+                : [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 3,
+                      blurRadius: 10,
+                      offset: const Offset(1, 8),
+                    ),
+                  ]),
         child: Stack(
           children: [
             Positioned(
@@ -52,10 +115,60 @@ class _CategoryAnimationContainerState
                       color: Colors.yellow),
             ),
             Positioned(
+              top: 30,
+              child: SizedBox(
+                height: widget.height * 0.65,
+                width: (widget.height * 3) * 0.25,
+                child: Image.asset(
+                  imageName,
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+            Positioned(
+              right: 35,
+              top: 25,
+              child: SizedBox(
+                height: widget.height * 0.6,
+                width: (widget.height * 3) * 0.38,
+                child: Text(
+                  widget.category,
+                  style: const TextStyle(
+                      color: Colors.brown,
+                      fontSize: 23,
+                      fontWeight: FontWeight.w700),
+                ),
+              ),
+            ),
+            Positioned(
+              right: 90,
+              bottom: 30,
               child: Container(
-                height: widget.height ,
-                width: (widget.height * 3) * 0.35,
-                color: Colors.red,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                height: widget.height * 0.20,
+                width: (widget.height * 3) * 0.25,
+                decoration: BoxDecoration(
+                  color: Colors.yellow,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: FittedBox(
+                        child: Text(
+                          '${widget.amount} ${widget.taType}',
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    const Icon(
+                      Icons.arrow_right_rounded,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                  ],
+                ),
               ),
             )
           ],
