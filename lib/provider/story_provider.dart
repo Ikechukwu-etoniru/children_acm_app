@@ -25,9 +25,43 @@ class StoryProvider with ChangeNotifier {
     return [..._storyList];
   }
 
+  List<StoryAid> storyByCategory(String categ) {
+    if (categ == 'All') {
+      return _storyList;
+    }
+    TaCategory category = categ == 'Faith'
+        ? TaCategory.faith
+        : categ == 'General'
+            ? TaCategory.general
+            : categ == 'Christmas'
+                ? TaCategory.christmas
+                : categ == 'Love'
+                    ? TaCategory.love
+                    : categ == 'Easter'
+                        ? TaCategory.easter
+                        : categ == 'Father\'s Day'
+                            ? TaCategory.fathers
+                            : categ == 'Mother\'s Day'
+                                ? TaCategory.mothers
+                                : categ == 'Repentance'
+                                    ? TaCategory.repentance
+                                    : categ == 'Forgiveness'
+                                        ? TaCategory.forgiveness
+                                        : TaCategory.general;
+    return _storyList.where((element) => element.category == category).toList();
+  }
+
+  int numberPerCategory(String cate) {
+    if (cate == 'All') {
+      return _storyList.length;
+    }
+    return _storyList
+        .where((story) => story.category.toString().contains(cate.toLowerCase()))
+        .toList()
+        .length;
+  }
+
   
 
-  List<StoryAid> filterByCategories(List<TaCategory> cateList) {
-    return _storyList.where((song) => cateList.contains(song.category)).toList();
-  }
+  
 }

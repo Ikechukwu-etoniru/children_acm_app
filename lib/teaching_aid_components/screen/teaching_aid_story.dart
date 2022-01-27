@@ -3,11 +3,11 @@ import 'package:provider/provider.dart';
 
 import '/dashboard_components/screens/dashboard_screen.dart';
 import '/teaching_aid_components/screen/widgets/category_animation.dart';
-import '/provider/songs_provider.dart';
+import '/provider/story_provider.dart';
 
-class TeachingAidSongScreen extends StatelessWidget {
-  static const routeName = '/teaching_aid_song_screen';
-  const TeachingAidSongScreen({Key? key}) : super(key: key);
+class TeachingAidStoryScreen extends StatelessWidget {
+  static const routeName = '/teaching_aid_story_screen';
+  const TeachingAidStoryScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +38,11 @@ class TeachingAidSongScreen extends StatelessWidget {
         shrinkWrap: true,
         itemCount: DashboardScreen.categoryList.length,
         itemBuilder: (context, index) => CategoryAnimationContainer(
-          color: const Color(0xff312c76),
+          color: const Color(0xfffce9e1),
           height: deviceHeight * 0.2,
           category: DashboardScreen.categoryList[index],
-          taType: 'Songs',
-          amount: Provider.of<SongProvider>(context)
+          taType: 'Story',
+          amount: Provider.of<StoryProvider>(context)
               .numberPerCategory(DashboardScreen.categoryList[index]),
         ),
       ),

@@ -1,5 +1,8 @@
-import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/song_list_screen.dart';
 import 'package:flutter/material.dart';
+
+import '/dashboard_components/screens/dashboard_screen.dart';
+import '/teaching_aid_components/screen/song_list_screen.dart';
+import '/teaching_aid_components/screen/story_list_screen.dart';
 
 class CategoryAnimationContainer extends StatefulWidget {
   final double height;
@@ -58,6 +61,11 @@ class _CategoryAnimationContainerState
           _onTappped = true;
         });
         Future.delayed(const Duration(milliseconds: 100), () {
+          if (widget.taType == 'Story') {
+            Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+              return StoryListScreen(taCategory: widget.category);
+            }));
+          }
           if (widget.taType == 'Songs') {
             Navigator.of(context).push(MaterialPageRoute(builder: (_) {
               return SongListScreen(taCategory: widget.category);
@@ -76,18 +84,20 @@ class _CategoryAnimationContainerState
             : const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         height: !_onTappped ? widget.height : widget.height + 10,
         decoration: BoxDecoration(
-            color: widget.color.withOpacity(0.1),
+            color: widget.color == const Color(0xff312c76)
+                ? widget.color.withOpacity(0.1)
+                : widget.color,
             borderRadius: BorderRadius.circular(20),
             boxShadow: _onTappped
                 ? [
                     BoxShadow(
-                      color: Colors.yellow.withOpacity(0.4),
+                      color: DashboardScreen.primaryColor.withOpacity(0.4),
                       spreadRadius: 3,
                       blurRadius: 10,
                       offset: const Offset(1, 8),
                     ),
                     BoxShadow(
-                      color: Colors.yellow.withOpacity(0.2),
+                      color: DashboardScreen.primaryColor.withOpacity(0.2),
                       spreadRadius: 5,
                       blurRadius: 20,
                       offset: const Offset(1, 29),

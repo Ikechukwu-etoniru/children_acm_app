@@ -1,11 +1,12 @@
-import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/teaching_aid_songs.dart';
-import 'package:acm_diocese_of_calabar/widget/animation_container.dart';
+import '/widget/animation_container.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '/screen/app_drawer.dart';
 import '/widget/appbar_trailing_icon.dart';
 import '/dashboard_components/screens/dashboard_screen.dart';
+import '/teaching_aid_components/screen/teaching_aid_songs.dart';
+import '/teaching_aid_components/screen/teaching_aid_story.dart';
 
 class TeachingAidScreen extends StatelessWidget {
   static const routeName = 'teaching_aid_screen.dart';
@@ -153,7 +154,7 @@ class TeachingAidScreen extends StatelessWidget {
               id: 1,
               imageName: 'images/song_icon.png'),
           AnimationContainer(
-              routeName: TeachingAidSongScreen.routeName,
+              routeName: TeachingAidStoryScreen.routeName,
               color: const Color(0xfffce9e1),
               height: deviceHeight * 0.18,
               width: deviceWidth * 0.9,

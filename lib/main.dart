@@ -1,4 +1,5 @@
 import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/single_song_screen.dart';
+import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/teaching_aid_story.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -43,7 +44,8 @@ class MyApp extends StatelessWidget {
               const TrainingCoursesScreen(),
           TeachingAidSongScreen.routeName: (ctx) =>
               const TeachingAidSongScreen(),
-          SingleSongScreen.routeName: (ctx) => const SingleSongScreen()
+          SingleSongScreen.routeName: (ctx) => const SingleSongScreen(),
+          TeachingAidStoryScreen.routeName: (ctx) => const TeachingAidStoryScreen()
         },
       ),
     );
