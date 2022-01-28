@@ -1,3 +1,4 @@
+import 'package:acm_diocese_of_calabar/search_components/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -30,13 +31,15 @@ class _DrawerAnimationContainerState extends State<DrawerAnimationContainer> {
         Future.delayed(const Duration(milliseconds: 70), () {
           widget.id == 1
               ? Navigator.of(context).pushReplacementNamed('/')
-              : widget.id == 3
-                  ? Navigator.of(context)
-                      .pushReplacementNamed(TrainingScreen.routeName)
-                  : widget.id == 4
+              : widget.id == 2
+                  ? Navigator.of(context).pushNamed(SearchScreen.routeName)
+                  : widget.id == 3
                       ? Navigator.of(context)
-                          .pushReplacementNamed(TeachingAidScreen.routeName)
-                      : () {};
+                          .pushReplacementNamed(TrainingScreen.routeName)
+                      : widget.id == 4
+                          ? Navigator.of(context)
+                              .pushReplacementNamed(TeachingAidScreen.routeName)
+                          : () {};
         }).then((value) {
           setState(() {
             _onTapped = false;

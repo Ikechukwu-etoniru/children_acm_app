@@ -9,18 +9,21 @@ class ObjectLessonProvider with ChangeNotifier {
         id: '1',
         title: 'ghdjsldldlfkf',
         description: 'teyey rgffjfjf fhfjfkfkd dgshsjsjdbd',
-        category: TaCategory.christmas),
+        category: TaCategory.christmas,
+        tags: ['object', 'object lesson', 'christmass']),
     ObjectLessonAid(
         id: '2',
         title: 'ghdjsldldlfkf',
         description:
             'teyey rgffjfjf fhfnfjfjkf fflfgpg glhkhmh jfkfkd dgshsjsjdbd',
-        category: TaCategory.easter),
+        category: TaCategory.easter,
+        tags: ['object', 'object lesson', 'christmass']),
     ObjectLessonAid(
         id: '3',
         title: 'ghdjsldldlfkdjdkdkf',
         description: 'teyey rgffjfmdmldlf fflpd ddkdlfjf fhfjfkfkd dgshsjsjdbd',
-        category: TaCategory.faith)
+        category: TaCategory.faith,
+        tags: ['object', 'object lesson', 'christmass'])
   ];
 
   List<ObjectLessonAid> get objectLessonList {
@@ -64,5 +67,11 @@ class ObjectLessonProvider with ChangeNotifier {
             (object) => object.category.toString().contains(cate.toLowerCase()))
         .toList()
         .length;
+  }
+
+  List<ObjectLessonAid> getSongByTag(String tag) {
+    return objectLessonList
+        .where((element) => element.tags.contains(tag))
+        .toList();
   }
 }

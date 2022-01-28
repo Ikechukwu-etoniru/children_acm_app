@@ -5,7 +5,12 @@ class ObjectLessonAid {
   final String title;
   final String description;
   final TaCategory category;
+  final List<String>? tags;
 
   ObjectLessonAid(
-      {required this.id, required this.title, required this.description, required this.category});
+      {required this.id,
+      required this.title,
+      required this.description,
+      required this.category,
+      this.tags});
 }

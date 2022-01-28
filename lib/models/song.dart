@@ -17,6 +17,7 @@ class SongAid {
   final String songUrl;
   final String songLyrics;
   final String? videoUrl;
+  final List<String> tags;
 
   SongAid(
       {required this.id,
@@ -24,5 +25,6 @@ class SongAid {
       required this.category,
       required this.songUrl,
       required this.songLyrics,
+      required this.tags,
       this.videoUrl});
 }

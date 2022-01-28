@@ -139,46 +139,46 @@ class SingleObjectLessonContainer extends StatelessWidget {
           ]),
       child: Row(
         children: [
-          const SizedBox(
-            width: 15,
+          SizedBox(
+            width: width * 0.04,
           ),
-          Stack(children: const [
-            Center(
-              child: Icon(Icons.emoji_objects,
-                  color: DashboardScreen.primaryColor, size: 60),
-            ),
-            Positioned(
-              top: 22,
-              left: 5,
-              child: CircleAvatar(
-                radius: 3,
-                backgroundColor: Colors.yellow,
+          SizedBox(
+            width: width * 0.2,
+            child: Stack(children: const [
+              Center(
+                child: Icon(Icons.emoji_objects,
+                    color: DashboardScreen.primaryColor, size: 60),
               ),
-            ),
-            Positioned(
-              top: 8,
-              left: 13,
-              child: CircleAvatar(
-                radius: 1.5,
-                backgroundColor: Colors.yellow,
+              Positioned(
+                top: 22,
+                left: 5,
+                child: CircleAvatar(
+                  radius: 3,
+                  backgroundColor: Colors.yellow,
+                ),
               ),
-            ),
-            Positioned(
-              top: 5,
-              left: 40,
-              child: CircleAvatar(
-                radius: 3,
-                backgroundColor: Colors.yellow,
+              Positioned(
+                top: 8,
+                left: 13,
+                child: CircleAvatar(
+                  radius: 1.5,
+                  backgroundColor: Colors.yellow,
+                ),
               ),
-            ),
-          ]),
-          const SizedBox(
-            width: 15,
+              Positioned(
+                top: 5,
+                left: 40,
+                child: CircleAvatar(
+                  radius: 3,
+                  backgroundColor: Colors.yellow,
+                ),
+              ),
+            ]),
           ),
           Container(
             padding: const EdgeInsets.symmetric(vertical: 10),
             height: height * 0.9,
-            width: 230,
+            width: width * 0.6,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -201,17 +201,18 @@ class SingleObjectLessonContainer extends StatelessWidget {
               ],
             ),
           ),
-          const Spacer(),
-          InkWell(
-            onTap: () {
-              Navigator.of(context).pushNamed(
-                  SingleObjectLessonScreen.routeName,
-                  arguments: {'1': objectLesson});
-            },
-            child: const Icon(
-              Icons.forward,
-              color: Colors.yellow,
-              size: 40,
+          Expanded(
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed(
+                    SingleObjectLessonScreen.routeName,
+                    arguments: {'1': objectLesson});
+              },
+              child: const Icon(
+                Icons.forward,
+                color: Colors.yellow,
+                size: 40,
+              ),
             ),
           ),
           const SizedBox(width: 15)

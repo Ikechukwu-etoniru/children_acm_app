@@ -1,6 +1,3 @@
-import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/single_artwork_screen.dart';
-import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/single_object_lesson_screen.dart';
-import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/teaching_aid_objectlesson.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +15,10 @@ import '/provider/artwork_provider.dart';
 import '/training_components/screens/training_courses_screen.dart';
 import '/teaching_aid_components/screen/single_song_screen.dart';
 import '/teaching_aid_components/screen/teaching_aid_story.dart';
+import '/search_components/search_screen.dart';
+import '/teaching_aid_components/screen/single_artwork_screen.dart';
+import '/teaching_aid_components/screen/single_object_lesson_screen.dart';
+import '/teaching_aid_components/screen/teaching_aid_objectlesson.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,7 +49,14 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'ACM',
-        theme: ThemeData(primarySwatch: Colors.green, fontFamily: 'Poppins'),
+        theme: ThemeData(
+          primarySwatch: Colors.green,
+          fontFamily: 'Poppins',
+          appBarTheme: const AppBarTheme(
+            elevation: 0,
+            color: Colors.transparent,
+          ),
+        ),
         home: DashboardScreen(),
         routes: {
           TrainingScreen.routeName: (ctx) => TrainingScreen(),
@@ -67,7 +75,8 @@ class MyApp extends StatelessWidget {
           TeachingAidObjectLessonScreen.routeName: (ctx) =>
               const TeachingAidObjectLessonScreen(),
           SingleObjectLessonScreen.routeName: (ctx) =>
-              const SingleObjectLessonScreen()
+              const SingleObjectLessonScreen(),
+          SearchScreen.routeName: (ctx) => const SearchScreen()
         },
       ),
     );

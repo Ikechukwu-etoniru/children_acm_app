@@ -8,19 +8,23 @@ class SongProvider with ChangeNotifier {
         songUrl: 'welcome.com',
         title: 'All i want for christams',
         id: '1',
-        songLyrics: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr '),
+        songLyrics: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr ',
+        tags: ['song', 'songs', 'christmas', 'love']),
     SongAid(
-        category: TaCategory.faith,
-        songUrl: 'welcome.com',
-        title: 'All i want for christams',
-        id: '2',
-        songLyrics: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr '),
+      category: TaCategory.faith,
+      songUrl: 'welcome.com',
+      title: 'All i want for christams',
+      id: '2',
+      songLyrics: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr ',
+      tags: ['song', 'songs', 'christmas', 'love']
+    ),
     SongAid(
         category: TaCategory.easter,
         songUrl: 'welcome.com',
         title: 'All i want for christams',
         id: '3',
-        songLyrics: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr '),
+        songLyrics: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr',
+        tags: ['song', 'songs', 'christmas', 'love']),
   ];
 
   List<SongAid> get songList {
@@ -61,5 +65,10 @@ class SongProvider with ChangeNotifier {
         .where((song) => song.category.toString().contains(cate.toLowerCase()))
         .toList()
         .length;
+  }
+
+
+  List<SongAid> getSongByTag (String tag)  {
+    return _songList.where((element) => element.tags.contains(tag)).toList();
   }
 }
