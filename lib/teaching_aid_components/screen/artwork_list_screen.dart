@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '/dashboard_components/screens/dashboard_screen.dart';
-import '/models/story.dart';
-import '/provider/story_provider.dart';
-import 'single_story_screen.dart';
+import '/models/artwork.dart';
+import '/provider/artwork_provider.dart';
+import '/teaching_aid_components/screen/single_artwork_screen.dart';
 
-class StoryListScreen extends StatelessWidget {
+class ArtworkListScreen extends StatelessWidget {
   final String taCategory;
-  const StoryListScreen({required this.taCategory, Key? key}) : super(key: key);
+  const ArtworkListScreen({required this.taCategory, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
-    final storyList =
-        Provider.of<StoryProvider>(context).storyByCategory(taCategory);
+    final artworkList =
+        Provider.of<ArtworkProvider>(context).artworkByCategory(taCategory);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -94,11 +95,11 @@ class StoryListScreen extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-                itemCount: storyList.length,
+                itemCount: artworkList.length,
                 itemBuilder: (ctx, index) {
-                  return SingleStoryContainer(
+                  return SingleArtworkContainer(
                     height: deviceHeight * 0.1,
-                    story: storyList[index],
+                    artwork: artworkList[index],
                     width: deviceWidth * 0.95,
                   );
                 }),
@@ -109,13 +110,12 @@ class StoryListScreen extends StatelessWidget {
   }
 }
 
-class SingleStoryContainer extends StatelessWidget {
+class SingleArtworkContainer extends StatelessWidget {
   final double height;
-  final StoryAid story;
+  final ArtworkAid artwork;
   final double width;
-  
-  const SingleStoryContainer(
-      {required this.height, required this.story, required this.width, Key? key})
+  const SingleArtworkContainer(
+      {required this.height, required this.artwork, required this.width, Key? key})
       : super(key: key);
 
   @override
@@ -141,7 +141,7 @@ class SingleStoryContainer extends StatelessWidget {
           ),
           Stack(children: const [
             Center(
-              child: Icon(Icons.menu_book,
+              child: Icon(Icons.art_track,
                   color: DashboardScreen.primaryColor, size: 60),
             ),
             Positioned(
@@ -181,7 +181,7 @@ class SingleStoryContainer extends StatelessWidget {
               children: [
                 FittedBox(
                   child: Text(
-                    story.title,
+                    artwork.title,
                     style: const TextStyle(
                         fontWeight: FontWeight.w700,
                         fontFamily: 'Quicksand',
@@ -189,10 +189,10 @@ class SingleStoryContainer extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 3),
-                const FittedBox(
+                FittedBox(
                   child: Text(
-                    'story details',
-                    style: TextStyle(color: Colors.grey),
+                    artwork.description,
+                    style: const TextStyle(color: Colors.grey),
                   ),
                 )
               ],
@@ -201,8 +201,8 @@ class SingleStoryContainer extends StatelessWidget {
           const Spacer(),
           InkWell(
             onTap: () {
-              Navigator.of(context).pushNamed(SingleStoryScreen.routeName,
-                  arguments: {'1': story});
+              Navigator.of(context).pushNamed(SingleArtworkScreen.routeName,
+                  arguments: {'1': artwork});
             },
             child: const Icon(
               Icons.forward,
@@ -216,104 +216,3 @@ class SingleStoryContainer extends StatelessWidget {
     );
   }
 }
-
-//  @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       margin: const EdgeInsets.symmetric(horizontal: 3, vertical: 3),
-//       height: height,
-//       decoration: BoxDecoration(
-//           color: Colors.white,
-//           borderRadius: BorderRadius.circular(15),
-//           boxShadow: [
-//             BoxShadow(
-//               color: Colors.grey.withOpacity(0.1),
-//               spreadRadius: 1,
-//               blurRadius: 5,
-//               offset: const Offset(0, 5),
-//             )
-//           ]),
-//       child: Row(
-//         children: [
-//           SizedBox(
-//             width: width * 0.04,
-//           ),
-//           Stack(children:  [
-//            const  Center(
-//               child: Icon(Icons.my_library_music,
-//                   color: DashboardScreen.primaryColor, size: 60),
-//             ),
-//             const Positioned(
-//               top: 22,
-//               left: 5,
-//               child: CircleAvatar(
-//                 radius: 3,
-//                 backgroundColor: Colors.yellow,
-//               ),
-//             ),
-//             const Positioned(
-//               top: 8,
-//               left: 13,
-//               child: CircleAvatar(
-//                 radius: 1.5,
-//                 backgroundColor: Colors.yellow,
-//               ),
-//             ),
-//             Positioned(
-//               top: 5,
-//               left: width * 0.1,
-//               child: const CircleAvatar(
-//                 radius: 3,
-//                 backgroundColor: Colors.yellow,
-//               ),
-//             ),
-//           ]),
-//            SizedBox(
-//             width: width * 0.06,
-//           ),
-//           Container(
-//             padding: const EdgeInsets.symmetric(vertical: 10),
-//             height: height * 0.9,
-//             width: width * 0.6,
-//             child: Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 FittedBox(
-//                   child: Text(
-//                     song.title,
-//                     style: const TextStyle(
-//                         fontWeight: FontWeight.w700,
-//                         fontFamily: 'Quicksand',
-//                         fontSize: 18),
-//                   ),
-//                 ),
-//                 const SizedBox(height: 3),
-//                 FittedBox(
-//                   child: Text(
-//                     song.songLyrics.substring(0, 34),
-//                     style: const TextStyle(color: Colors.grey),
-//                   ),
-//                 )
-//               ],
-//             ),
-//           ),
-//           const Spacer(),
-//           InkWell(
-//             onTap: () {
-//               Navigator.of(context).pushNamed(SingleSongScreen.routeName, 
-//                 arguments: {'1' : song}
-//               );
-//             },
-//             child: const Icon(
-//               Icons.forward,
-//               color: Colors.yellow,
-//               size: 40,
-//             ),
-//           ),
-//           const SizedBox(width: 15)
-//         ],
-//       ),
-//     );
-//   }
-// }
-

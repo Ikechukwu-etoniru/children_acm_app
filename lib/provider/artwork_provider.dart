@@ -1,33 +1,35 @@
 import 'package:acm_diocese_of_calabar/models/song.dart';
 import 'package:flutter/material.dart';
-import '/models/story.dart';
 
-class StoryProvider with ChangeNotifier {
-  final List<StoryAid> _storyList = [
-    StoryAid(
-        category: TaCategory.christmas,
-        title: 'The waiting game',
+import '/models/artwork.dart';
+
+class ArtworkProvider with ChangeNotifier {
+  final List<ArtworkAid> _artworkList = [
+    ArtworkAid(
         id: '1',
-        story: 'hdhdhd ddjdjdmf dbfbdhfjffjgff fjfkffjfnfnf fhjddjdhfhg gngjgjgg'),
-    StoryAid(
-        category: TaCategory.faith,
-        title: 'The Man with 4 wives',
+        title: 'Bjdkdkfk',
+        description: 'ndhdhfjhfjfkfkfkfkkrrr',
+        category: TaCategory.christmas),
+    ArtworkAid(
         id: '2',
-        story: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr '),
-    StoryAid(
-        category: TaCategory.easter,
-        title: 'The storyy of the pencil',
+        title: 'yryjeke',
+        description: 'hdgdgdjjkeekjff fngjgkgggmntgjttktitr rrkrkrkrkffkgjgjgg',
+        category: TaCategory.easter),
+    ArtworkAid(
         id: '3',
-        story: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr '),
+        title: 'ajskdkdkd',
+        description:
+            'fnhfhfhfjfkfkfkfkfkf fjfnfjf fnfkd dejekj rfjfkjfkjtrjt tjtj',
+        category: TaCategory.faith),
   ];
 
-  List<StoryAid> get storyList {
-    return [..._storyList];
+  List<ArtworkAid> get artworkList {
+    return [..._artworkList];
   }
 
-  List<StoryAid> storyByCategory(String categ) {
+  List<ArtworkAid> artworkByCategory(String categ) {
     if (categ == 'All') {
-      return _storyList;
+      return _artworkList;
     }
     TaCategory category = categ == 'Faith'
         ? TaCategory.faith
@@ -48,20 +50,19 @@ class StoryProvider with ChangeNotifier {
                                     : categ == 'Forgiveness'
                                         ? TaCategory.forgiveness
                                         : TaCategory.general;
-    return _storyList.where((element) => element.category == category).toList();
+    return _artworkList
+        .where((element) => element.category == category)
+        .toList();
   }
 
   int numberPerCategory(String cate) {
     if (cate == 'All') {
-      return _storyList.length;
+      return _artworkList.length;
     }
-    return _storyList
-        .where((story) => story.category.toString().contains(cate.toLowerCase()))
+    return _artworkList
+        .where(
+            (story) => story.category.toString().contains(cate.toLowerCase()))
         .toList()
         .length;
   }
-
-  
-
-  
 }

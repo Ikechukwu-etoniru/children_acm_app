@@ -1,4 +1,3 @@
-import '/widget/animation_container.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -7,6 +6,9 @@ import '/widget/appbar_trailing_icon.dart';
 import '/dashboard_components/screens/dashboard_screen.dart';
 import '/teaching_aid_components/screen/teaching_aid_songs.dart';
 import '/teaching_aid_components/screen/teaching_aid_story.dart';
+import 'teaching_aid_artwork.dart';
+import '/widget/animation_container.dart';
+import 'teaching_aid_objectlesson.dart';
 
 class TeachingAidScreen extends StatelessWidget {
   static const routeName = 'teaching_aid_screen.dart';
@@ -163,7 +165,7 @@ class TeachingAidScreen extends StatelessWidget {
               id: 2,
               imageName: 'images/story_icon.png'),
           AnimationContainer(
-              routeName: TeachingAidSongScreen.routeName,
+              routeName: TeachingAidArtworkScreen.routeName,
               color: const Color(0xffffe8e7),
               height: deviceHeight * 0.18,
               width: deviceWidth * 0.9,
@@ -172,7 +174,7 @@ class TeachingAidScreen extends StatelessWidget {
               id: 3,
               imageName: 'images/art_icon.png'),
           AnimationContainer(
-              routeName: TeachingAidSongScreen.routeName,
+              routeName: TeachingAidObjectLessonScreen.routeName,
               color: const Color(0xff9897ae),
               height: deviceHeight * 0.18,
               width: deviceWidth * 0.9,

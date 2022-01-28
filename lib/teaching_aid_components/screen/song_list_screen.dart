@@ -99,6 +99,7 @@ class SongListScreen extends StatelessWidget {
                   return SingleMusicContainer(
                     height: deviceHeight * 0.1,
                     song: songList[index],
+                    width: deviceWidth * 0.95,
                   );
                 }),
           )
@@ -111,8 +112,9 @@ class SongListScreen extends StatelessWidget {
 class SingleMusicContainer extends StatelessWidget {
   final double height;
   final SongAid song;
+  final double width;
   const SingleMusicContainer(
-      {required this.height, required this.song, Key? key})
+      {required this.height, required this.song, required this.width, Key? key})
       : super(key: key);
 
   @override
@@ -133,46 +135,46 @@ class SingleMusicContainer extends StatelessWidget {
           ]),
       child: Row(
         children: [
-          const SizedBox(
-            width: 15,
+          SizedBox(
+            width: width * 0.04,
           ),
-          Stack(children: const [
-            Center(
-              child: Icon(Icons.my_library_music,
-                  color: DashboardScreen.primaryColor, size: 60),
-            ),
-            Positioned(
-              top: 22,
-              left: 5,
-              child: CircleAvatar(
-                radius: 3,
-                backgroundColor: Colors.yellow,
+          SizedBox(
+            width: width * 0.2,
+            child: Stack(children: [
+              const Center(
+                child: Icon(Icons.my_library_music,
+                    color: DashboardScreen.primaryColor, size: 60),
               ),
-            ),
-            Positioned(
-              top: 8,
-              left: 13,
-              child: CircleAvatar(
-                radius: 1.5,
-                backgroundColor: Colors.yellow,
+              const Positioned(
+                top: 22,
+                left: 5,
+                child: CircleAvatar(
+                  radius: 3,
+                  backgroundColor: Colors.yellow,
+                ),
               ),
-            ),
-            Positioned(
-              top: 5,
-              left: 40,
-              child: CircleAvatar(
-                radius: 3,
-                backgroundColor: Colors.yellow,
+              const Positioned(
+                top: 8,
+                left: 13,
+                child: CircleAvatar(
+                  radius: 1.5,
+                  backgroundColor: Colors.yellow,
+                ),
               ),
-            ),
-          ]),
-          const SizedBox(
-            width: 15,
+              Positioned(
+                top: 5,
+                left: width * 0.1,
+                child: const CircleAvatar(
+                  radius: 3,
+                  backgroundColor: Colors.yellow,
+                ),
+              ),
+            ]),
           ),
           Container(
             padding: const EdgeInsets.symmetric(vertical: 10),
             height: height * 0.9,
-            width: 230,
+            width: width * 0.6,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -195,17 +197,17 @@ class SingleMusicContainer extends StatelessWidget {
               ],
             ),
           ),
-          const Spacer(),
-          InkWell(
-            onTap: () {
-              Navigator.of(context).pushNamed(SingleSongScreen.routeName, 
-                arguments: {'1' : song}
-              );
-            },
-            child: const Icon(
-              Icons.forward,
-              color: Colors.yellow,
-              size: 40,
+          Expanded(
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed(SingleSongScreen.routeName,
+                    arguments: {'1': song});
+              },
+              child: const Icon(
+                Icons.forward,
+                color: Colors.yellow,
+                size: 40,
+              ),
             ),
           ),
           const SizedBox(width: 15)

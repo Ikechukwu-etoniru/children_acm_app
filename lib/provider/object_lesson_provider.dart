@@ -1,33 +1,35 @@
 import 'package:acm_diocese_of_calabar/models/song.dart';
 import 'package:flutter/material.dart';
-import '/models/story.dart';
 
-class StoryProvider with ChangeNotifier {
-  final List<StoryAid> _storyList = [
-    StoryAid(
-        category: TaCategory.christmas,
-        title: 'The waiting game',
+import '/models/objectlesson.dart';
+
+class ObjectLessonProvider with ChangeNotifier {
+  final List<ObjectLessonAid> _objectLessonList = [
+    ObjectLessonAid(
         id: '1',
-        story: 'hdhdhd ddjdjdmf dbfbdhfjffjgff fjfkffjfnfnf fhjddjdhfhg gngjgjgg'),
-    StoryAid(
-        category: TaCategory.faith,
-        title: 'The Man with 4 wives',
+        title: 'ghdjsldldlfkf',
+        description: 'teyey rgffjfjf fhfjfkfkd dgshsjsjdbd',
+        category: TaCategory.christmas),
+    ObjectLessonAid(
         id: '2',
-        story: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr '),
-    StoryAid(
-        category: TaCategory.easter,
-        title: 'The storyy of the pencil',
+        title: 'ghdjsldldlfkf',
+        description:
+            'teyey rgffjfjf fhfnfjfjkf fflfgpg glhkhmh jfkfkd dgshsjsjdbd',
+        category: TaCategory.easter),
+    ObjectLessonAid(
         id: '3',
-        story: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr '),
+        title: 'ghdjsldldlfkdjdkdkf',
+        description: 'teyey rgffjfmdmldlf fflpd ddkdlfjf fhfjfkfkd dgshsjsjdbd',
+        category: TaCategory.faith)
   ];
 
-  List<StoryAid> get storyList {
-    return [..._storyList];
+  List<ObjectLessonAid> get objectLessonList {
+    return [..._objectLessonList];
   }
 
-  List<StoryAid> storyByCategory(String categ) {
+  List<ObjectLessonAid> objectLessonByCategory(String categ) {
     if (categ == 'All') {
-      return _storyList;
+      return _objectLessonList;
     }
     TaCategory category = categ == 'Faith'
         ? TaCategory.faith
@@ -48,20 +50,19 @@ class StoryProvider with ChangeNotifier {
                                     : categ == 'Forgiveness'
                                         ? TaCategory.forgiveness
                                         : TaCategory.general;
-    return _storyList.where((element) => element.category == category).toList();
+    return _objectLessonList
+        .where((element) => element.category == category)
+        .toList();
   }
 
   int numberPerCategory(String cate) {
     if (cate == 'All') {
-      return _storyList.length;
+      return _objectLessonList.length;
     }
-    return _storyList
-        .where((story) => story.category.toString().contains(cate.toLowerCase()))
+    return _objectLessonList
+        .where(
+            (object) => object.category.toString().contains(cate.toLowerCase()))
         .toList()
         .length;
   }
-
-  
-
-  
 }

@@ -34,7 +34,7 @@ class _AnimationContainerState extends State<AnimationContainer> {
         setState(() {
           _onTapped = true;
         });
-        Future.delayed(const Duration(milliseconds: 100), () {
+        Future.delayed(const Duration(milliseconds: 70), () {
           Navigator.of(context).pushNamed(widget.routeName!);
         }).then((value) {
           setState(() {

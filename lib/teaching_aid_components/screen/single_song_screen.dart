@@ -30,7 +30,7 @@ class SingleSongScreen extends StatelessWidget {
         onPressed: () {},
         backgroundColor: Colors.yellow,
         elevation: 25,
-        child: Icon(
+        child: const Icon(
           Icons.star_rounded,
           size: 30,
         ),
@@ -91,7 +91,7 @@ class SingleSongScreen extends StatelessWidget {
                         spreadRadius: 1,
                         blurRadius: 10)
                   ]),
-              child: Icon(
+              child: const Icon(
                 Icons.play_circle_fill_rounded,
                 color: Colors.white,
                 size: 30,

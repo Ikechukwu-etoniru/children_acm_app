@@ -2,67 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../dashboard_components/screens/dashboard_screen.dart';
-import '../teaching_aid_components/screen/teaching_aid_screen.dart';
-import '/training_components/screens/training_screen.dart';
+import '/widget/drawer_animation_container.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
-
-  Widget _drawerList(
-      IconData icon, String title, BuildContext context, int id) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-      width: 120 + (title.length * 6),
-      height: 45,
-      decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          splashColor: DashboardScreen.primaryColor,
-          onTap: id == 1
-              ? () {
-                  Navigator.of(context).pushReplacementNamed('/');
-                }
-              : id == 2
-                  ? () {
-                      Navigator.of(context)
-                          .pushReplacementNamed(TrainingScreen.routeName);
-                    }
-                  : id == 6
-                      ? () {
-                          Navigator.of(context).pushReplacementNamed(
-                              TeachingAidScreen.routeName);
-                        }
-                      : () {},
-          child: Row(
-            children: [
-              FaIcon(
-                icon,
-                color: Colors.grey.withOpacity(0.8),
-                size: 17,
-              ),
-              const SizedBox(
-                width: 20,
-              ),
-              Text(
-                title,
-                style: TextStyle(
-                    fontFamily: 'Quicksand',
-                    fontSize: 15,
-                    color: Colors.black.withOpacity(0.7),
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 
   Widget _lowerDrawerList(String text, IconData icon) {
     return Container(
@@ -138,15 +81,22 @@ class AppDrawer extends StatelessWidget {
               ]),
             ),
             const SizedBox(height: 15),
-            _drawerList(FontAwesomeIcons.thList, 'Dashboard', context, 1),
-            _drawerList(FontAwesomeIcons.bookReader, 'Training', context, 2),
-            _drawerList(
-                FontAwesomeIcons.calendarAlt, 'ACM Calendar', context, 3),
-            _drawerList(FontAwesomeIcons.bible, 'BIBLE', context, 4),
-            _drawerList(FontAwesomeIcons.buffer, 'ACM Glossary', context, 5),
-            _drawerList(
-                FontAwesomeIcons.university, 'Teaching Aids', context, 6),
-            _drawerList(FontAwesomeIcons.search, 'Search', context, 7),
+            const DrawerAnimationContainer(
+                title: 'Dashboard', icon: FontAwesomeIcons.thList, id: 1),
+            const DrawerAnimationContainer(
+                title: 'Search', icon: FontAwesomeIcons.search, id: 2),
+            const DrawerAnimationContainer(
+                title: 'Training', icon: FontAwesomeIcons.bookReader, id: 3),
+            const DrawerAnimationContainer(
+                title: 'Teaching Aids',
+                icon: FontAwesomeIcons.university,
+                id: 4),
+            const DrawerAnimationContainer(
+                title: 'ACM Calendar',
+                icon: FontAwesomeIcons.calendarAlt,
+                id: 5),
+            const DrawerAnimationContainer(
+                title: 'ACM Glossary', icon: FontAwesomeIcons.buffer, id: 6),
             const SizedBox(height: 15),
             Expanded(
               child: Container(

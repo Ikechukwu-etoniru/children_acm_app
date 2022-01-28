@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../object_lesson_list_screen.dart';
 import '/dashboard_components/screens/dashboard_screen.dart';
 import '/teaching_aid_components/screen/song_list_screen.dart';
 import '/teaching_aid_components/screen/story_list_screen.dart';
+import '/teaching_aid_components/screen/artwork_list_screen.dart';
 
 class CategoryAnimationContainer extends StatefulWidget {
   final double height;
@@ -61,6 +63,16 @@ class _CategoryAnimationContainerState
           _onTappped = true;
         });
         Future.delayed(const Duration(milliseconds: 100), () {
+          if (widget.taType == 'Object Lesson') {
+            Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+              return ObjectLessonListScreen(taCategory: widget.category);
+            }));
+          }
+          if (widget.taType == 'Art Work') {
+            Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+              return ArtworkListScreen(taCategory: widget.category);
+            }));
+          }
           if (widget.taType == 'Story') {
             Navigator.of(context).push(MaterialPageRoute(builder: (_) {
               return StoryListScreen(taCategory: widget.category);
