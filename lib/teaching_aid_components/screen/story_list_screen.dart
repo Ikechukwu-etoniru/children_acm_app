@@ -136,8 +136,7 @@ class SingleStoryContainer extends StatelessWidget {
           ]),
       child: Row(
         children: [
-           Container(
-             color: Colors.red,
+           SizedBox(
             width: width * 0.04,
           ),
           SizedBox(

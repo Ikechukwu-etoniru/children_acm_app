@@ -8,17 +8,21 @@ class StoryProvider with ChangeNotifier {
         category: TaCategory.christmas,
         title: 'The waiting game',
         id: '1',
-        story: 'hdhdhd ddjdjdmf dbfbdhfjffjgff fjfkffjfnfnf fhjddjdhfhg gngjgjgg'),
+        story:
+            'hdhdhd ddjdjdmf dbfbdhfjffjgff fjfkffjfnfnf fhjddjdhfhg gngjgjgg',
+        tags: ['story', 'story aid', 'christmas']),
     StoryAid(
         category: TaCategory.faith,
         title: 'The Man with 4 wives',
         id: '2',
-        story: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr '),
+        story: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr',
+        tags: ['story', 'story aid', 'christmas']),
     StoryAid(
         category: TaCategory.easter,
         title: 'The storyy of the pencil',
         id: '3',
-        story: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr '),
+        story: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr',
+        tags: ['story', 'story aid', 'christmas']),
   ];
 
   List<StoryAid> get storyList {
@@ -56,12 +60,13 @@ class StoryProvider with ChangeNotifier {
       return _storyList.length;
     }
     return _storyList
-        .where((story) => story.category.toString().contains(cate.toLowerCase()))
+        .where(
+            (story) => story.category.toString().contains(cate.toLowerCase()))
         .toList()
         .length;
   }
 
-  
-
-  
+  List<StoryAid> getStoryByTag(String tag) {
+    return _storyList.where((element) => element.tags.contains(tag)).toList();
+  }
 }

@@ -1,5 +1,12 @@
-import 'package:acm_diocese_of_calabar/screen/app_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '/provider/artwork_provider.dart';
+import '/provider/object_lesson_provider.dart';
+import '/provider/songs_provider.dart';
+import '/provider/story_provider.dart';
+import '/screen/app_drawer.dart';
+import '/search_components/widgets/search_result_container.dart';
 
 class SearchScreen extends StatefulWidget {
   static const routeName = '/search_screen.dart';
@@ -16,6 +23,22 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
     final devicewidth = MediaQuery.of(context).size.width;
+    final songList = searchPhrase == null
+        ? []
+        : Provider.of<SongProvider>(context)
+            .getSongByTag(searchPhrase!.trim().toLowerCase());
+    final storyList = searchPhrase == null
+        ? []
+        : Provider.of<StoryProvider>(context)
+            .getStoryByTag(searchPhrase!.trim().toLowerCase());
+    final artworkList = searchPhrase == null
+        ? []
+        : Provider.of<ArtworkProvider>(context)
+            .getArtworkByTag(searchPhrase!.trim().toLowerCase());
+    final objectLessonList = searchPhrase == null
+        ? []
+        : Provider.of<ObjectLessonProvider>(context)
+            .getObjectLessonByTag(searchPhrase!.trim().toLowerCase());
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: AppBar(
@@ -97,7 +120,6 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: TextField(
                       onChanged: (value) {
                         searchPhrase = value;
-                        FocusScope.of(context).unfocus();
                       },
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
@@ -117,11 +139,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 InkWell(
                   onTap: () {
                     FocusScope.of(context).unfocus();
-                    if (searchPhrase == null) {}
-                    if (searchPhrase!.isEmpty) {}
-                    if (searchPhrase!.isNotEmpty){
-                      var finalPhrase =  searchPhrase!.trim().toLowerCase();
-                    }
+                    setState(() {});
                   },
                   child: Container(
                     height: 45,
@@ -158,15 +176,80 @@ class _SearchScreenState extends State<SearchScreen> {
                 )
               ]),
             ),
-          if (_showSearchBar)
+          if (_showSearchBar && searchPhrase != null)
             Expanded(
-                child: Container(
-              decoration: BoxDecoration(
+              child: Container(
+                decoration: BoxDecoration(
                   color: Colors.grey.withOpacity(0.1),
                   borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40))),
-            ))
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  ),
+                ),
+                child: searchPhrase!.isEmpty
+                    ? const Center(
+                        child: Text('Search box is empty'),
+                      )
+                    : songList.isEmpty &&
+                            storyList.isEmpty &&
+                            artworkList.isEmpty &&
+                            objectLessonList.isEmpty
+                        ? Center(
+                            child: Text(
+                                "We dont have any material for '$searchPhrase' \n Search term we dont have material for will be added in future updates"),
+                          )
+                        : ListView(
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 10),
+                                child: Text(
+                                  "Showing results for '$searchPhrase'",
+                                  style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                              SearchResultContainer(
+                                teachingAid: songList,
+                                color: const Color(0xff312c76),
+                                imageName: 'images/song_icon.png',
+                                height: deviceHeight * 0.18,
+                                width: devicewidth * 0.92,
+                                type: const ['Song', 'Songs'],
+                                id: 1,
+                              ),
+                              SearchResultContainer(
+                                  teachingAid: storyList,
+                                  color: const Color(0xfffce9e1),
+                                  imageName: 'images/story_icon.png',
+                                  height: deviceHeight * 0.18,
+                                  width: devicewidth * 0.9,
+                                  type: const ['Story', 'Stories'],
+                                  id: 2),
+                              SearchResultContainer(
+                                teachingAid: artworkList,
+                                color: const Color(0xffffe8e7),
+                                imageName: 'images/art_icon.png',
+                                height: deviceHeight * 0.18,
+                                width: devicewidth * 0.9,
+                                type: const ['Artwork', 'Artworks'],
+                                id: 3,
+                              ),
+                              SearchResultContainer(
+                                teachingAid: objectLessonList,
+                                color: const Color(0xff9897ae),
+                                imageName: 'images/object_lesson_icon.png',
+                                height: deviceHeight * 0.18,
+                                width: devicewidth * 0.9,
+                                type: const ['Object lesson', 'Object lessons'],
+                                id: 4,
+                              )
+                            ],
+                          ),
+              ),
+            )
         ],
       ),
     );

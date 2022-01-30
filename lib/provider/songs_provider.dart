@@ -9,7 +9,7 @@ class SongProvider with ChangeNotifier {
         title: 'All i want for christams',
         id: '1',
         songLyrics: 'reyeddhud dddhdgdjfjf fhfjfjfjtjr ',
-        tags: ['song', 'songs', 'christmas', 'love']),
+        tags: ['song', 'songs', 'christmas', 'love','try']),
     SongAid(
       category: TaCategory.faith,
       songUrl: 'welcome.com',

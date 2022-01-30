@@ -9,18 +9,21 @@ class ArtworkProvider with ChangeNotifier {
         id: '1',
         title: 'Bjdkdkfk',
         description: 'ndhdhfjhfjfkfkfkfkkrrr',
-        category: TaCategory.christmas),
+        category: TaCategory.christmas,
+        tags: ['art', 'artwork', 'christmas']),
     ArtworkAid(
         id: '2',
         title: 'yryjeke',
         description: 'hdgdgdjjkeekjff fngjgkgggmntgjttktitr rrkrkrkrkffkgjgjgg',
-        category: TaCategory.easter),
+        category: TaCategory.easter,
+        tags: ['art', 'artwork', 'christmas']),
     ArtworkAid(
         id: '3',
         title: 'ajskdkdkd',
         description:
             'fnhfhfhfjfkfkfkfkfkf fjfnfjf fnfkd dejekj rfjfkjfkjtrjt tjtj',
-        category: TaCategory.faith),
+        category: TaCategory.faith,
+        tags: ['art', 'artwork', 'christmas']),
   ];
 
   List<ArtworkAid> get artworkList {
@@ -64,5 +67,8 @@ class ArtworkProvider with ChangeNotifier {
             (story) => story.category.toString().contains(cate.toLowerCase()))
         .toList()
         .length;
+  }
+  List<ArtworkAid> getArtworkByTag (String tag)  {
+    return _artworkList.where((element) => element.tags.contains(tag)).toList();
   }
 }

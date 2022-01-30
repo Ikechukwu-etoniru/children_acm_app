@@ -5,12 +5,12 @@ class ArtworkAid {
   final String title;
   final String description;
   final TaCategory category;
-  final List<String>? tags;
+  final List<String> tags;
 
   ArtworkAid(
       {required this.id,
       required this.title,
       required this.description,
       required this.category,
-      this.tags});
+      required this.tags});
 }

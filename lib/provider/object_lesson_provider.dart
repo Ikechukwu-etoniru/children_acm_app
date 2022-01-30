@@ -10,20 +10,20 @@ class ObjectLessonProvider with ChangeNotifier {
         title: 'ghdjsldldlfkf',
         description: 'teyey rgffjfjf fhfjfkfkd dgshsjsjdbd',
         category: TaCategory.christmas,
-        tags: ['object', 'object lesson', 'christmass']),
+        tags: ['object', 'object lesson', 'christmas']),
     ObjectLessonAid(
         id: '2',
         title: 'ghdjsldldlfkf',
         description:
             'teyey rgffjfjf fhfnfjfjkf fflfgpg glhkhmh jfkfkd dgshsjsjdbd',
         category: TaCategory.easter,
-        tags: ['object', 'object lesson', 'christmass']),
+        tags: ['object', 'object lesson', 'christmas']),
     ObjectLessonAid(
         id: '3',
         title: 'ghdjsldldlfkdjdkdkf',
         description: 'teyey rgffjfmdmldlf fflpd ddkdlfjf fhfjfkfkd dgshsjsjdbd',
         category: TaCategory.faith,
-        tags: ['object', 'object lesson', 'christmass'])
+        tags: ['object', 'object lesson', 'christmas'])
   ];
 
   List<ObjectLessonAid> get objectLessonList {
@@ -73,5 +73,9 @@ class ObjectLessonProvider with ChangeNotifier {
     return objectLessonList
         .where((element) => element.tags.contains(tag))
         .toList();
+  }
+
+  List<ObjectLessonAid> getObjectLessonByTag (String tag)  {
+    return _objectLessonList.where((element) => element.tags.contains(tag)).toList();
   }
 }

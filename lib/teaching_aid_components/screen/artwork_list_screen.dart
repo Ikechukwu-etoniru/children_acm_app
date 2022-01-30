@@ -115,7 +115,10 @@ class SingleArtworkContainer extends StatelessWidget {
   final ArtworkAid artwork;
   final double width;
   const SingleArtworkContainer(
-      {required this.height, required this.artwork, required this.width, Key? key})
+      {required this.height,
+      required this.artwork,
+      required this.width,
+      Key? key})
       : super(key: key);
 
   @override
@@ -136,7 +139,7 @@ class SingleArtworkContainer extends StatelessWidget {
           ]),
       child: Row(
         children: [
-           SizedBox(
+          SizedBox(
             width: width * 0.04,
           ),
           SizedBox(
@@ -172,7 +175,6 @@ class SingleArtworkContainer extends StatelessWidget {
               ),
             ]),
           ),
-          
           Container(
             padding: const EdgeInsets.symmetric(vertical: 10),
             height: height * 0.9,
@@ -192,7 +194,7 @@ class SingleArtworkContainer extends StatelessWidget {
                 const SizedBox(height: 3),
                 FittedBox(
                   child: Text(
-                    artwork.description,
+                    artwork.description.substring(0, 10),
                     style: const TextStyle(color: Colors.grey),
                   ),
                 )

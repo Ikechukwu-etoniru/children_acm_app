@@ -5,12 +5,12 @@ class StoryAid {
   final TaCategory category;
   final String title;
   final String story;
-  final List<String>? tags;
+  final List<String> tags;
 
   StoryAid(
       {required this.id,
       required this.title,
       required this.category,
       required this.story,
-      this.tags});
+      required this.tags});
 }

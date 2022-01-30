@@ -18,8 +18,6 @@ class SongListScreen extends StatelessWidget {
         Provider.of<SongProvider>(context).songsByCategory(taCategory);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
         title: Text(
           taCategory,
           style: const TextStyle(
@@ -190,7 +188,7 @@ class SingleMusicContainer extends StatelessWidget {
                 const SizedBox(height: 3),
                 FittedBox(
                   child: Text(
-                    song.songLyrics.substring(0, 34),
+                    song.songLyrics.substring(0, 15),
                     style: const TextStyle(color: Colors.grey),
                   ),
                 )
