@@ -1,13 +1,13 @@
-import 'package:acm_diocese_of_calabar/models/artwork.dart';
-import 'package:acm_diocese_of_calabar/models/objectlesson.dart';
-import 'package:acm_diocese_of_calabar/models/song.dart';
-import 'package:acm_diocese_of_calabar/models/story.dart';
-import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/single_artwork_screen.dart';
-import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/single_object_lesson_screen.dart';
-import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/single_song_screen.dart';
-import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/single_story_screen.dart';
-import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/story_list_screen.dart';
 import 'package:flutter/material.dart';
+
+import '/models/artwork.dart';
+import '/models/objectlesson.dart';
+import '/models/song.dart';
+import '/models/story.dart';
+import '/teaching_aid_components/screen/single_artwork_screen.dart';
+import '/teaching_aid_components/screen/single_object_lesson_screen.dart';
+import '/teaching_aid_components/screen/single_song_screen.dart';
+import '/teaching_aid_components/screen/single_story_screen.dart';
 
 import '/dashboard_components/screens/dashboard_screen.dart';
 

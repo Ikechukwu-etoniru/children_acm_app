@@ -9,6 +9,7 @@ class AnimationContainer extends StatefulWidget {
   final String? title;
   final int? id;
   final String? subTitle;
+  final List<dynamic>? teahingAid;
   const AnimationContainer(
       {this.routeName,
       this.height,
@@ -18,6 +19,7 @@ class AnimationContainer extends StatefulWidget {
       this.title,
       this.id,
       this.subTitle,
+      this.teahingAid,
       Key? key})
       : super(key: key);
 
@@ -34,8 +36,17 @@ class _AnimationContainerState extends State<AnimationContainer> {
         setState(() {
           _onTapped = true;
         });
-        Future.delayed(const Duration(milliseconds: 70), () {
-          Navigator.of(context).pushNamed(widget.routeName!);
+        Future.delayed(const Duration(milliseconds: 70), 
+        () {
+          if (widget.id! < 5){
+             Navigator.of(context).pushNamed(widget.routeName!);
+          } else {
+            Navigator.of(context).pushNamed(widget.routeName!, arguments: {
+             
+             '2' : widget.title
+            });
+          }
+         
         }).then((value) {
           setState(() {
             _onTapped = false;

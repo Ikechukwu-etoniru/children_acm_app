@@ -46,6 +46,9 @@ class _SearchScreenState extends State<SearchScreen> {
           return IconButton(
             onPressed: () {
               Scaffold.of(context).openDrawer();
+              Future.delayed(const Duration(milliseconds: 500), () {
+                FocusScope.of(context).unfocus();
+              });
             },
             icon: const Icon(
               Icons.menu_open_rounded,

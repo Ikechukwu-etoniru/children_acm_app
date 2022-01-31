@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '/dashboard_components/screens/dashboard_screen.dart';
 import '/models/song.dart';
+import '/provider/songs_provider.dart';
+import 'widgets/fav_song_floating_action_button.dart';
 
 class SingleSongScreen extends StatelessWidget {
   static const routeName = '/single_song_screen.dart';
@@ -11,6 +14,7 @@ class SingleSongScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final arguments = ModalRoute.of(context)!.settings.arguments as Map;
     final song = arguments['1'] as SongAid;
+    final songProvider = Provider.of<SongProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -26,14 +30,9 @@ class SingleSongScreen extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.yellow,
-        elevation: 25,
-        child: const Icon(
-          Icons.star_rounded,
-          size: 30,
-        ),
+      floatingActionButton: FavFloatingButton(
+        providerData: songProvider,
+        song: song,
       ),
       body: Stack(
         children: [
@@ -66,12 +65,13 @@ class SingleSongScreen extends StatelessWidget {
                 ),
                 if (song.videoUrl != null)
                   Container(
-                      height: 200,
-                      width: double.infinity,
-                      color: Colors.grey.withOpacity(0.2),
-                      child: const Center(
-                        child: Text('Video will show here'),
-                      ))
+                    height: 200,
+                    width: double.infinity,
+                    color: Colors.grey.withOpacity(0.2),
+                    child: const Center(
+                      child: Text('Video will show here'),
+                    ),
+                  )
               ],
             ),
           ),

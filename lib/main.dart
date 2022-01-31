@@ -1,3 +1,4 @@
+import 'package:acm_diocese_of_calabar/favorite_components/favourite_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +20,7 @@ import '/search_components/search_screen.dart';
 import '/teaching_aid_components/screen/single_artwork_screen.dart';
 import '/teaching_aid_components/screen/single_object_lesson_screen.dart';
 import '/teaching_aid_components/screen/teaching_aid_objectlesson.dart';
+import '/favorite_components/favourite_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -76,7 +78,9 @@ class MyApp extends StatelessWidget {
               const TeachingAidObjectLessonScreen(),
           SingleObjectLessonScreen.routeName: (ctx) =>
               const SingleObjectLessonScreen(),
-          SearchScreen.routeName: (ctx) => const SearchScreen()
+          SearchScreen.routeName: (ctx) => const SearchScreen(),
+          FavouriteScreen.routeName: (ctx) => const FavouriteScreen(),
+          FavouriteListScreen.routeName : (ctx) => const FavouriteListScreen()
         },
       ),
     );
