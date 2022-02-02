@@ -179,7 +179,10 @@ class SearchResultScreenContainer extends StatelessWidget {
                 } else if (category == 'Object lessons') {
                   Navigator.of(context).pushNamed(
                       SingleObjectLessonScreen.routeName,
-                      arguments: {'1': (singleTeachingAid as ObjectLessonAid)});
+                      arguments: {
+                        '1': (singleTeachingAid as ObjectLessonAid),
+                        '2': ''
+                      });
                 }
               },
               child: const Icon(

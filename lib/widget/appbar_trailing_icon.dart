@@ -60,10 +60,6 @@ class AppbarTrailingIcon extends StatelessWidget {
                 value: 1, text: 'My favourites', icon: Icons.stars_rounded),
             _pOpupMenuList(
                 value: 2, text: 'About App', icon: Icons.info_rounded),
-            _pOpupMenuList(
-                value: 3,
-                text: 'Contact Developer',
-                icon: Icons.contact_mail_rounded)
           ];
         });
   }

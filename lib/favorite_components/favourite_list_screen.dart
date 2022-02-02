@@ -1,4 +1,3 @@
-import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/single_object_lesson_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,6 +9,8 @@ import '/provider/story_provider.dart';
 import '/teaching_aid_components/screen/single_story_screen.dart';
 import '/provider/artwork_provider.dart';
 import '/teaching_aid_components/screen/single_artwork_screen.dart';
+import '/favorite_components/favourite_screen.dart';
+import '/teaching_aid_components/screen/single_object_lesson_screen.dart';
 
 class FavouriteListScreen extends StatelessWidget {
   static const routeName = '/favourite_list_screen.dart';
@@ -32,7 +33,20 @@ class FavouriteListScreen extends StatelessWidget {
                     : [];
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed(FavouriteScreen.routeName);
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios_new_outlined,
+            size: 30,
+            color: DashboardScreen.primaryColor,
+          ),
+        ),
+        title: Text(
+          title,
+          style: const TextStyle(color: Colors.black),
+        ),
       ),
       body: ListView.builder(
         itemCount: aidList.length,
@@ -170,7 +184,8 @@ class SingleFavContainer extends StatelessWidget {
                   Navigator.of(context).pushNamed(SingleArtworkScreen.routeName,
                       arguments: {'1': teachingAid, '2': id});
                 } else if (id == 'Object lesson') {
-                  Navigator.of(context).pushNamed(SingleObjectLessonScreen.routeName,
+                  Navigator.of(context).pushNamed(
+                      SingleObjectLessonScreen.routeName,
                       arguments: {'1': teachingAid, '2': id});
                 }
               },

@@ -204,7 +204,7 @@ class SingleObjectLessonContainer extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).pushNamed(
                     SingleObjectLessonScreen.routeName,
-                    arguments: {'1': objectLesson});
+                    arguments: {'1': objectLesson, '2' : ''});
               },
               child: const Icon(
                 Icons.forward,

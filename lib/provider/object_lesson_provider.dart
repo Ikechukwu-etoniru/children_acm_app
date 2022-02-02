@@ -76,12 +76,12 @@ class ObjectLessonProvider with ChangeNotifier {
   }
 
   final List<ObjectLessonAid> _objectLessonAidFavList = [
-    ObjectLessonAid(
-        id: '10',
-        title: 'ghdjsljgjh  lk dldlfkf',
-        description: 'teyey rgffjfjf fhfjfkfkd dgshsjsjdbd',
-        category: TaCategory.christmas,
-        tags: ['object', 'object lesson', 'christmas'])
+    // ObjectLessonAid(
+    //     id: '10',
+    //     title: 'ghdjsljgjh  lk dldlfkf',
+    //     description: 'teyey rgffjfjf fhfjfkfkd dgshsjsjdbd',
+    //     category: TaCategory.christmas,
+    //     tags: ['object', 'object lesson', 'christmas'])
   ];
 
   List<ObjectLessonAid> get objectLessonAidFavList {

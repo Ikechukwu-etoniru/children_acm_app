@@ -36,17 +36,13 @@ class _AnimationContainerState extends State<AnimationContainer> {
         setState(() {
           _onTapped = true;
         });
-        Future.delayed(const Duration(milliseconds: 70), 
-        () {
-          if (widget.id! < 5){
-             Navigator.of(context).pushNamed(widget.routeName!);
+        Future.delayed(const Duration(milliseconds: 70), () {
+          if (widget.id! < 5) {
+            Navigator.of(context).pushNamed(widget.routeName!);
           } else {
-            Navigator.of(context).pushNamed(widget.routeName!, arguments: {
-            
-             '2' : widget.title
-            });
+            Navigator.of(context)
+                .pushNamed(widget.routeName!, arguments: {'2': widget.title});
           }
-         
         }).then((value) {
           setState(() {
             _onTapped = false;
@@ -109,7 +105,10 @@ class _AnimationContainerState extends State<AnimationContainer> {
             child: Text(
               widget.title!,
               style: TextStyle(
-                color: widget.id == 2 || widget.id == 3
+                color: widget.id == 2 ||
+                        widget.id == 3 ||
+                        widget.id == 6 ||
+                        widget.id == 7
                     ? Colors.brown
                     : Colors.white,
                 fontWeight: FontWeight.w800,
@@ -128,7 +127,10 @@ class _AnimationContainerState extends State<AnimationContainer> {
                 widget.subTitle!,
                 style: TextStyle(
                   fontFamily: 'Quicksand',
-                  color: widget.id == 2 || widget.id == 3
+                  color: widget.id == 2 ||
+                          widget.id == 3 ||
+                          widget.id == 6 ||
+                          widget.id == 7
                       ? Colors.brown
                       : Colors.white,
                   fontWeight: FontWeight.w600,

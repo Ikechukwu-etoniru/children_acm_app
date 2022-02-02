@@ -73,12 +73,12 @@ class ArtworkProvider with ChangeNotifier {
   }
 
   final List<ArtworkAid> _artworkAidFavList = [
-    ArtworkAid(
-        id: '10',
-        title: 'Bjdkddhd djdjkdkd kfk',
-        description: 'ndhdhfjjfjgjghfjfkfkfkfkkrrr',
-        category: TaCategory.christmas,
-        tags: ['art', 'artwork', 'christmas'])
+    // ArtworkAid(
+    //     id: '10',
+    //     title: 'Bjdkddhd djdjkdkd kfk',
+    //     description: 'ndhdhfjjfjgjghfjfkfkfkfkkrrr',
+    //     category: TaCategory.christmas,
+    //     tags: ['art', 'artwork', 'christmas'])
   ];
 
   List<ArtworkAid> get artworkAidFavList {

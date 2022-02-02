@@ -23,10 +23,11 @@ class DashboardBottombar extends StatelessWidget {
         itemCount: 5,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 2/2.3,
+            childAspectRatio: 2 / 2.3,
             mainAxisSpacing: 10,
             crossAxisSpacing: 10),
-        itemBuilder: (context, index) => const DashboardTeachingAidContainer(),
+        itemBuilder: (context, index) =>
+            DashboardTeachingAidContainer(index: index),
       ),
     );
   }

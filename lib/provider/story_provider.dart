@@ -71,13 +71,13 @@ class StoryProvider with ChangeNotifier {
   }
 
   final List<StoryAid> _storyAidFavList = [
-    StoryAid(
-      category: TaCategory.christmas,
-      title: 'The gggg game',
-      id: '10',
-      story: 'hdhdhd ddhfhfjfjdjdmf dbfbdhfjffjgff fjfkffjfnfnf fhjddjdhfhg gngjgjgg',
-      tags: ['story', 'story aid', 'christmas'],
-    )
+    // StoryAid(
+    //   category: TaCategory.christmas,
+    //   title: 'The gggg game',
+    //   id: '10',
+    //   story: 'hdhdhd ddhfhfjfjdjdmf dbfbdhfjffjgff fjfkffjfnfnf fhjddjdhfhg gngjgjgg',
+    //   tags: ['story', 'story aid', 'christmas'],
+    // )
   ];
 
   List<StoryAid> get storyAidFavList {

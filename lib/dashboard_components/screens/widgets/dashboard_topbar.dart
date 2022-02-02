@@ -8,81 +8,139 @@ class DashboardTopbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final barWidth = MediaQuery.of(context).size.width;
+
     return Container(
       height: barHeight,
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6.5),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: DashboardScreen.primaryColor,
-        gradient: RadialGradient(colors: [
-          DashboardScreen.primaryColor.withOpacity(0.4),
-          DashboardScreen.primaryColor.withOpacity(0.6),
-          DashboardScreen.primaryColor.withOpacity(0.8),
-          DashboardScreen.primaryColor
-        ], center: Alignment.topCenter, radius: 1),
-        boxShadow: [BoxShadow(
-          color: Colors.grey.withOpacity(0.5),
-          offset: const Offset(0,10),
-          blurRadius: 20
-        )]
-      ),
-      
+          borderRadius: BorderRadius.circular(20),
+          color: DashboardScreen.primaryColor,
+          gradient: RadialGradient(colors: [
+            DashboardScreen.primaryColor.withOpacity(0.4),
+            DashboardScreen.primaryColor.withOpacity(0.6),
+            DashboardScreen.primaryColor.withOpacity(0.8),
+            DashboardScreen.primaryColor
+          ], center: Alignment.topCenter, radius: 1),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                offset: const Offset(0, 10),
+                blurRadius: 20)
+          ]),
       child: Row(children: [
         SizedBox(
-          height: 160,
-          width: 160,
+          height: barHeight,
+          width: barWidth * 0.4,
           child: Image.asset(
             'images/leaf_pic1.png',
           ),
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 15,
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 5),
-              height: 65,
-              width: 155,
-              child: const Text(
-                'Grow in Christ everyday',
-                style: TextStyle(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 20,
-                    wordSpacing: 1,
-                    color: Colors.white),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: barHeight * 0.08,
               ),
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 4),
-              padding: const EdgeInsets.all(4),
-              height: 30,
-              width: 130,
-              decoration: BoxDecoration(
-                color: Colors.yellow,
-                borderRadius: BorderRadius.circular(40),
-              ),
-              child: FittedBox(
-                child: Row(
-                  children: const [
-                    Text(
-                      'Verse for today',
-                      style: TextStyle(color: Colors.brown),
-                    ),
-                    Icon(Icons.arrow_right_rounded)
-                  ],
+              Container(
+                margin: const EdgeInsets.only(left: 5),
+                height: barHeight * 0.37,
+                width: barWidth * 0.4,
+                child: const Text(
+                  'Grow in Christ everyday',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 20,
+                      wordSpacing: 1,
+                      color: Colors.white),
                 ),
               ),
-            )
-          ],
+              SizedBox(
+                height: barHeight * 0.15,
+              ),
+              VerseOfTheDayContainer(
+                height: barHeight * 0.21,
+                width: barWidth * 0.4,
+              ),
+              const Spacer()
+            ],
+          ),
         )
       ]),
+    );
+  }
+}
+
+class VerseOfTheDayContainer extends StatefulWidget {
+  final double height;
+  final double width;
+  const VerseOfTheDayContainer(
+      {required this.height, required this.width, Key? key})
+      : super(key: key);
+
+  @override
+  _VerseOfTheDayContainerState createState() => _VerseOfTheDayContainerState();
+}
+
+class _VerseOfTheDayContainerState extends State<VerseOfTheDayContainer> {
+  var _onPressed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _onPressed = true;
+        });
+        Future.delayed(const Duration(milliseconds: 70), () {
+          showDialog(context: context, builder: (ctx) => AlertDialog());
+        }).then((value) {
+          setState(() {
+            _onPressed = false;
+          });
+        });
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 60),
+        margin: const EdgeInsets.only(left: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        height: _onPressed ? widget.height + 10 : widget.height,
+        width: _onPressed ? widget.width + 10 : widget.width,
+        decoration: BoxDecoration(
+            gradient: const LinearGradient(
+                colors: [Colors.yellow, DashboardScreen.primaryColor]),
+            borderRadius: BorderRadius.circular(40),
+            boxShadow: _onPressed
+                ? [
+                    const BoxShadow(
+                      color: Colors.yellow,
+                      spreadRadius: 20,
+                      blurRadius: 30,
+                    )
+                  ]
+                : [
+                    BoxShadow(
+                      color: Colors.yellow.withOpacity(0.8),
+                      spreadRadius: 10,
+                      blurRadius: 20,
+                    )
+                  ]),
+        child: FittedBox(
+          child: Row(
+            children: const [
+              Text(
+                'Verse for today',
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
+              ),
+              Icon(Icons.arrow_right_rounded)
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
