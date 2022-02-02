@@ -160,13 +160,22 @@ class SearchResultScreenContainer extends StatelessWidget {
               onTap: () {
                 if (category == 'Songs') {
                   Navigator.of(context).pushNamed(SingleSongScreen.routeName,
-                      arguments: {'1': (singleTeachingAid as SongAid)});
+                      arguments: {
+                        '1': (singleTeachingAid as SongAid),
+                        '2': ''
+                      });
                 } else if (category == 'Stories') {
                   Navigator.of(context).pushNamed(SingleStoryScreen.routeName,
-                      arguments: {'1': (singleTeachingAid as StoryAid)});
+                      arguments: {
+                        '1': (singleTeachingAid as StoryAid),
+                        '2': ''
+                      });
                 } else if (category == 'Artworks') {
                   Navigator.of(context).pushNamed(SingleArtworkScreen.routeName,
-                      arguments: {'1': (singleTeachingAid as ArtworkAid)});
+                      arguments: {
+                        '1': (singleTeachingAid as ArtworkAid),
+                        '2': ''
+                      });
                 } else if (category == 'Object lessons') {
                   Navigator.of(context).pushNamed(
                       SingleObjectLessonScreen.routeName,

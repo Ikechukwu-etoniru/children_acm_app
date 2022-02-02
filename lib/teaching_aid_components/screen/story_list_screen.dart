@@ -204,7 +204,7 @@ class SingleStoryContainer extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 Navigator.of(context).pushNamed(SingleStoryScreen.routeName,
-                    arguments: {'1': story});
+                    arguments: {'1': story, '2' : ''});
               },
               child: const Icon(
                 Icons.forward,

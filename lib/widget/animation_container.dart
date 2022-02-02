@@ -42,7 +42,7 @@ class _AnimationContainerState extends State<AnimationContainer> {
              Navigator.of(context).pushNamed(widget.routeName!);
           } else {
             Navigator.of(context).pushNamed(widget.routeName!, arguments: {
-             
+            
              '2' : widget.title
             });
           }

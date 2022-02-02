@@ -205,7 +205,7 @@ class SingleArtworkContainer extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 Navigator.of(context).pushNamed(SingleArtworkScreen.routeName,
-                    arguments: {'1': artwork});
+                    arguments: {'1': artwork, '2' : ''});
               },
               child: const Icon(
                 Icons.forward,

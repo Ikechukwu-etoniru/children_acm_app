@@ -1,8 +1,15 @@
-import 'package:acm_diocese_of_calabar/dashboard_components/screens/dashboard_screen.dart';
-import 'package:acm_diocese_of_calabar/provider/songs_provider.dart';
-import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/single_song_screen.dart';
+import 'package:acm_diocese_of_calabar/teaching_aid_components/screen/single_object_lesson_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '/dashboard_components/screens/dashboard_screen.dart';
+import '/provider/object_lesson_provider.dart';
+import '/provider/songs_provider.dart';
+import '/teaching_aid_components/screen/single_song_screen.dart';
+import '/provider/story_provider.dart';
+import '/teaching_aid_components/screen/single_story_screen.dart';
+import '/provider/artwork_provider.dart';
+import '/teaching_aid_components/screen/single_artwork_screen.dart';
 
 class FavouriteListScreen extends StatelessWidget {
   static const routeName = '/favourite_list_screen.dart';
@@ -13,23 +20,29 @@ class FavouriteListScreen extends StatelessWidget {
     final deviceM = MediaQuery.of(context).size;
     final arguments = ModalRoute.of(context)!.settings.arguments as Map;
     final String title = arguments['2'];
-    final List<dynamic> aidSongList = Provider.of<SongProvider>(context).songAidFavList;
+    final List<dynamic> aidList = title == 'Songs'
+        ? Provider.of<SongProvider>(context).songAidFavList
+        : title == 'Story'
+            ? Provider.of<StoryProvider>(context).storyAidFavList
+            : title == 'Artwork'
+                ? Provider.of<ArtworkProvider>(context).artworkAidFavList
+                : title == 'Object lesson'
+                    ? Provider.of<ObjectLessonProvider>(context)
+                        .objectLessonAidFavList
+                    : [];
     return Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: title == 'Songs'
-            ? ListView.builder(
-                itemCount: aidSongList.length,
-                itemBuilder: (ctx, index) => SingleFavContainer(
-                    height: deviceM.height * 0.1,
-                    teachingAid: aidSongList[index],
-                    width: deviceM.width * 0.9,
-                    id: title),
-              )
-            : Center(
-                child: Text('think harder'),
-              ));
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: ListView.builder(
+        itemCount: aidList.length,
+        itemBuilder: (ctx, index) => SingleFavContainer(
+            height: deviceM.height * 0.1,
+            teachingAid: aidList[index],
+            width: deviceM.width * 0.9,
+            id: title),
+      ),
+    );
   }
 }
 
@@ -74,7 +87,17 @@ class SingleFavContainer extends StatelessWidget {
                 child: id == 'Songs'
                     ? const Icon(Icons.my_library_music,
                         color: DashboardScreen.primaryColor, size: 60)
-                    : const Icon(Icons.ac_unit),
+                    : id == 'Story'
+                        ? const Icon(Icons.menu_book,
+                            color: DashboardScreen.primaryColor, size: 60)
+                        : id == 'Artwork'
+                            ? const Icon(Icons.art_track,
+                                color: DashboardScreen.primaryColor, size: 60)
+                            : id == 'Object lesson'
+                                ? const Icon(Icons.emoji_objects,
+                                    color: DashboardScreen.primaryColor,
+                                    size: 60)
+                                : const Icon(Icons.ac_unit),
               ),
               const Positioned(
                 top: 22,
@@ -122,8 +145,12 @@ class SingleFavContainer extends StatelessWidget {
                 FittedBox(
                   child: Text(
                     id == 'Songs'
-                        ? teachingAid.songLyrics.substring(0, 15)
-                        : 'okay',
+                        ? teachingAid.songLyrics
+                        : id == 'Story'
+                            ? teachingAid.story
+                            : id == 'Artwork' || id == 'Object lesson'
+                                ? teachingAid.description
+                                : 'okay',
                     style: const TextStyle(color: Colors.grey),
                   ),
                 )
@@ -135,7 +162,16 @@ class SingleFavContainer extends StatelessWidget {
               onTap: () {
                 if (id == 'Songs') {
                   Navigator.of(context).pushNamed(SingleSongScreen.routeName,
-                      arguments: {'1': teachingAid});
+                      arguments: {'1': teachingAid, '2': id});
+                } else if (id == 'Story') {
+                  Navigator.of(context).pushNamed(SingleStoryScreen.routeName,
+                      arguments: {'1': teachingAid, '2': id});
+                } else if (id == 'Artwork') {
+                  Navigator.of(context).pushNamed(SingleArtworkScreen.routeName,
+                      arguments: {'1': teachingAid, '2': id});
+                } else if (id == 'Object lesson') {
+                  Navigator.of(context).pushNamed(SingleObjectLessonScreen.routeName,
+                      arguments: {'1': teachingAid, '2': id});
                 }
               },
               child: const Icon(

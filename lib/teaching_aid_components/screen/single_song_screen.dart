@@ -5,6 +5,7 @@ import '/dashboard_components/screens/dashboard_screen.dart';
 import '/models/song.dart';
 import '/provider/songs_provider.dart';
 import 'widgets/fav_song_floating_action_button.dart';
+import '/favorite_components/favourite_list_screen.dart';
 
 class SingleSongScreen extends StatelessWidget {
   static const routeName = '/single_song_screen.dart';
@@ -14,6 +15,7 @@ class SingleSongScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final arguments = ModalRoute.of(context)!.settings.arguments as Map;
     final song = arguments['1'] as SongAid;
+    final id = arguments['2'] as String;
     final songProvider = Provider.of<SongProvider>(context);
     return Scaffold(
       appBar: AppBar(
@@ -21,7 +23,13 @@ class SingleSongScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            if (id.isEmpty) {
+              Navigator.of(context).pop();
+            } else {
+              
+              Navigator.of(context)
+                  .pushReplacementNamed(FavouriteListScreen.routeName, arguments: {'2' : id});
+            }
           },
           icon: const Icon(
             Icons.arrow_back_ios_new_outlined,

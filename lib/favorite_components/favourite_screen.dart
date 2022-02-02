@@ -1,10 +1,13 @@
-import 'package:acm_diocese_of_calabar/favorite_components/favourite_list_screen.dart';
-import 'package:acm_diocese_of_calabar/provider/songs_provider.dart';
 import 'package:flutter/material.dart';
-
-import 'package:acm_diocese_of_calabar/widget/animation_container.dart';
-import 'package:acm_diocese_of_calabar/widget/appbar_trailing_icon.dart';
 import 'package:provider/provider.dart';
+
+import '/widget/animation_container.dart';
+import '/favorite_components/favourite_list_screen.dart';
+import '/provider/artwork_provider.dart';
+import '/provider/object_lesson_provider.dart';
+import '/provider/songs_provider.dart';
+import '/provider/story_provider.dart';
+import '/widget/appbar_trailing_icon.dart';
 import '/dashboard_components/screens/dashboard_screen.dart';
 
 class FavouriteScreen extends StatelessWidget {
@@ -16,6 +19,11 @@ class FavouriteScreen extends StatelessWidget {
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
     final favSongList = Provider.of<SongProvider>(context).songAidFavList;
+    final favStoryList = Provider.of<StoryProvider>(context).storyAidFavList;
+    final favArtworkList =
+        Provider.of<ArtworkProvider>(context).artworkAidFavList;
+    final favObjectLessonList =
+        Provider.of<ObjectLessonProvider>(context).objectLessonAidFavList;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your favourites'),
@@ -36,7 +44,6 @@ class FavouriteScreen extends StatelessWidget {
           // Id for animation container in favorites is at least 5 as i want the navigation to be diffrent
           AnimationContainer(
               routeName: FavouriteListScreen.routeName,
-              
               color: const Color(0xff312c76),
               height: deviceHeight * 0.18,
               width: deviceWidth * 0.9,
@@ -45,6 +52,37 @@ class FavouriteScreen extends StatelessWidget {
                   'You have saved ${favSongList.length} songs as your favourite',
               id: 5,
               imageName: 'images/song_icon.png'),
+
+          AnimationContainer(
+              routeName: FavouriteListScreen.routeName,
+              color: const Color(0xfffce9e1),
+              height: deviceHeight * 0.18,
+              width: deviceWidth * 0.9,
+              title: 'Story',
+              subTitle:
+                  'You have saved ${favStoryList.length} story as your favourite',
+              id: 6,
+              imageName: 'images/story_icon.png'),
+          AnimationContainer(
+              routeName: FavouriteListScreen.routeName,
+              color: const Color(0xffffe8e7),
+              height: deviceHeight * 0.18,
+              width: deviceWidth * 0.9,
+              title: 'Artwork',
+              subTitle:
+                  'You have saved ${favArtworkList.length} artwork as your favourite',
+              id: 7,
+              imageName: 'images/art_icon.png'),
+          AnimationContainer(
+              routeName: FavouriteListScreen.routeName,
+              color: const Color(0xff9897ae),
+              height: deviceHeight * 0.18,
+              width: deviceWidth * 0.9,
+              title: 'Object lesson',
+              subTitle:
+                  'You have saved ${favObjectLessonList.length} object lessons as your favourite',
+              id: 8,
+              imageName: 'images/object_lesson_icon.png')
         ],
       ),
     );

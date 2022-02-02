@@ -199,7 +199,7 @@ class SingleMusicContainer extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 Navigator.of(context).pushNamed(SingleSongScreen.routeName,
-                    arguments: {'1': song});
+                    arguments: {'1': song, '2': ''});
               },
               child: const Icon(
                 Icons.forward,

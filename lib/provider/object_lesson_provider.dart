@@ -69,13 +69,33 @@ class ObjectLessonProvider with ChangeNotifier {
         .length;
   }
 
-  List<ObjectLessonAid> getSongByTag(String tag) {
-    return objectLessonList
+  List<ObjectLessonAid> getObjectLessonByTag(String tag) {
+    return _objectLessonList
         .where((element) => element.tags.contains(tag))
         .toList();
   }
 
-  List<ObjectLessonAid> getObjectLessonByTag (String tag)  {
-    return _objectLessonList.where((element) => element.tags.contains(tag)).toList();
+  final List<ObjectLessonAid> _objectLessonAidFavList = [
+    ObjectLessonAid(
+        id: '10',
+        title: 'ghdjsljgjh  lk dldlfkf',
+        description: 'teyey rgffjfjf fhfjfkfkd dgshsjsjdbd',
+        category: TaCategory.christmas,
+        tags: ['object', 'object lesson', 'christmas'])
+  ];
+
+  List<ObjectLessonAid> get objectLessonAidFavList {
+    return [..._objectLessonAidFavList];
+  }
+
+  void favLogic(ObjectLessonAid favObjectLesson) {
+    if (_objectLessonAidFavList
+            .any((element) => element.id == favObjectLesson.id) ==
+        true) {
+      _objectLessonAidFavList
+          .removeWhere((element) => favObjectLesson.id == element.id);
+    } else {
+      _objectLessonAidFavList.insert(0, favObjectLesson);
+    }
   }
 }

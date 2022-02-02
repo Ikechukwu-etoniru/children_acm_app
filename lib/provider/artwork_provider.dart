@@ -71,4 +71,25 @@ class ArtworkProvider with ChangeNotifier {
   List<ArtworkAid> getArtworkByTag (String tag)  {
     return _artworkList.where((element) => element.tags.contains(tag)).toList();
   }
+
+  final List<ArtworkAid> _artworkAidFavList = [
+    ArtworkAid(
+        id: '10',
+        title: 'Bjdkddhd djdjkdkd kfk',
+        description: 'ndhdhfjjfjgjghfjfkfkfkfkkrrr',
+        category: TaCategory.christmas,
+        tags: ['art', 'artwork', 'christmas'])
+  ];
+
+  List<ArtworkAid> get artworkAidFavList {
+    return [..._artworkAidFavList];
+  }
+
+  void favLogic(ArtworkAid favArtwork) {
+    if (_artworkAidFavList.any((element) => element.id == favArtwork.id) == true) {
+      _artworkAidFavList.removeWhere((element) => favArtwork.id == element.id);
+    } else {
+      _artworkAidFavList.insert(0, favArtwork);
+    }
+  }
 }

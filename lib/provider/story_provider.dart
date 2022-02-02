@@ -69,4 +69,26 @@ class StoryProvider with ChangeNotifier {
   List<StoryAid> getStoryByTag(String tag) {
     return _storyList.where((element) => element.tags.contains(tag)).toList();
   }
+
+  final List<StoryAid> _storyAidFavList = [
+    StoryAid(
+      category: TaCategory.christmas,
+      title: 'The gggg game',
+      id: '10',
+      story: 'hdhdhd ddhfhfjfjdjdmf dbfbdhfjffjgff fjfkffjfnfnf fhjddjdhfhg gngjgjgg',
+      tags: ['story', 'story aid', 'christmas'],
+    )
+  ];
+
+  List<StoryAid> get storyAidFavList {
+    return [..._storyAidFavList];
+  }
+
+  void favLogic(StoryAid favStory) {
+    if (_storyAidFavList.any((element) => element.id == favStory.id) == true) {
+      _storyAidFavList.removeWhere((element) => favStory.id == element.id);
+    } else {
+      _storyAidFavList.insert(0, favStory);
+    }
+  }
 }
