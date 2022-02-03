@@ -1,4 +1,8 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+
 import '/models/song.dart';
 
 class SongProvider with ChangeNotifier {
@@ -64,6 +68,13 @@ class SongProvider with ChangeNotifier {
         .where((song) => song.category.toString().contains(cate.toLowerCase()))
         .toList()
         .length;
+  }
+
+  SongAid randomSongaid () { 
+    final _random = Random();
+    final _randomSongaid = _songList[_random.nextInt(_songList.length)];
+    
+    return _randomSongaid;
   }
 
   List<SongAid> getSongByTag(String tag) {

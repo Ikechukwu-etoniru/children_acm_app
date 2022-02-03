@@ -96,7 +96,36 @@ class _VerseOfTheDayContainerState extends State<VerseOfTheDayContainer> {
           _onPressed = true;
         });
         Future.delayed(const Duration(milliseconds: 70), () {
-          showDialog(context: context, builder: (ctx) => AlertDialog());
+          showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (ctx) => AlertDialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    backgroundColor: Colors.yellow,
+                    elevation: 30,
+                    title: const Text(
+                      'Bible Verse For Today',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 25),
+                    ),
+                    content: const Text(
+                        'hfhfjfkd dndjkdkf ffhfjff fbfkfjfjfgfg fjhfjf'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(ctx).pop();
+                        },
+                        child: const Text(
+                          'Close',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      )
+                    ],
+                  ));
         }).then((value) {
           setState(() {
             _onPressed = false;
