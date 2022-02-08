@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -70,10 +69,10 @@ class SongProvider with ChangeNotifier {
         .length;
   }
 
-  SongAid randomSongaid () { 
+  SongAid randomSongaid() {
     final _random = Random();
     final _randomSongaid = _songList[_random.nextInt(_songList.length)];
-    
+
     return _randomSongaid;
   }
 
