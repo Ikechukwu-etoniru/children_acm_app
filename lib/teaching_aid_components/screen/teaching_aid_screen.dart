@@ -13,7 +13,7 @@ import 'teaching_aid_objectlesson.dart';
 class TeachingAidScreen extends StatelessWidget {
   static const routeName = 'teaching_aid_screen.dart';
   TeachingAidScreen({Key? key}) : super(key: key);
-  final myAppbar = AppBar(
+  final _myAppbar = AppBar(
     leading: Builder(builder: (context) {
       return IconButton(
         onPressed: () {
@@ -39,7 +39,7 @@ class TeachingAidScreen extends StatelessWidget {
     final tbWidth = deviceWidth * 0.9;
 
     return Scaffold(
-      appBar: myAppbar,
+      appBar: _myAppbar,
       drawer: const AppDrawer(),
       body: ListView(
         children: [

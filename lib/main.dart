@@ -1,14 +1,16 @@
-import 'package:acm_diocese_of_calabar/favorite_components/favourite_list_screen.dart';
+import 'package:acm_diocese_of_calabar/acm_glossary_component/acm_glossary_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'provider/object_lesson_provider.dart';
-import 'teaching_aid_components/screen/single_story_screen.dart';
-import 'teaching_aid_components/screen/teaching_aid_artwork.dart';
-import 'teaching_aid_components/screen/teaching_aid_screen.dart';
-import 'teaching_aid_components/screen/teaching_aid_songs.dart';
-import 'training_components/screens/training_screen.dart';
-import 'dashboard_components/screens/dashboard_screen.dart';
+import '/acm_calendar_components/calendar_main_screen.dart';
+import '/favorite_components/favourite_list_screen.dart';
+import '/provider/object_lesson_provider.dart';
+import '/teaching_aid_components/screen/single_story_screen.dart';
+import '/teaching_aid_components/screen/teaching_aid_artwork.dart';
+import '/teaching_aid_components/screen/teaching_aid_screen.dart';
+import '/teaching_aid_components/screen/teaching_aid_songs.dart';
+import '/training_components/screens/training_screen.dart';
+import '/dashboard_components/screens/dashboard_screen.dart';
 import '/provider/songs_provider.dart';
 import '/provider/story_provider.dart';
 import '/provider/courses_provider.dart';
@@ -80,7 +82,9 @@ class MyApp extends StatelessWidget {
               const SingleObjectLessonScreen(),
           SearchScreen.routeName: (ctx) => const SearchScreen(),
           FavouriteScreen.routeName: (ctx) => const FavouriteScreen(),
-          FavouriteListScreen.routeName : (ctx) => const FavouriteListScreen()
+          FavouriteListScreen.routeName : (ctx) => const FavouriteListScreen(),
+          CalendarMainScreen.routeName : (ctx) =>  CalendarMainScreen(),
+          AcmGlossaryScreen.routeName : (ctx) => AcmGlossaryScreen()
         },
       ),
     );

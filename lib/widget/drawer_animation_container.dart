@@ -1,7 +1,9 @@
-import 'package:acm_diocese_of_calabar/search_components/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '/acm_calendar_components/calendar_main_screen.dart';
+import '/acm_glossary_component/acm_glossary_screen.dart';
+import '/search_components/search_screen.dart';
 import '/dashboard_components/screens/dashboard_screen.dart';
 import '/teaching_aid_components/screen/teaching_aid_screen.dart';
 import '/training_components/screens/training_screen.dart';
@@ -39,7 +41,13 @@ class _DrawerAnimationContainerState extends State<DrawerAnimationContainer> {
                       : widget.id == 4
                           ? Navigator.of(context)
                               .pushReplacementNamed(TeachingAidScreen.routeName)
-                          : () {};
+                          : widget.id == 5
+                              ? Navigator.of(context).pushReplacementNamed(
+                                  CalendarMainScreen.routeName)
+                              : widget.id == 6
+                                  ? Navigator.of(context).pushReplacementNamed(
+                                      AcmGlossaryScreen.routeName)
+                                  : () {};
         }).then((value) {
           setState(() {
             _onTapped = false;
