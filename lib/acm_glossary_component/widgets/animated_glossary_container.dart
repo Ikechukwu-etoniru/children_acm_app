@@ -1,3 +1,4 @@
+import 'package:acm_diocese_of_calabar/acm_glossary_component/glossary_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class GlossaryContainer extends StatefulWidget {
@@ -28,7 +29,13 @@ class _GlossaryContainerState extends State<GlossaryContainer> {
         setState(() {
           _onTapped = true;
         });
-        Future.delayed(const Duration(milliseconds: 60), () {}).then((value) {
+        Future.delayed(const Duration(milliseconds: 60), () {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (ctx) {
+              return GlossaryDetailScreen(id: widget.id);
+            }),
+          );
+        }).then((value) {
           setState(() {
             _onTapped = false;
           });
@@ -37,7 +44,7 @@ class _GlossaryContainerState extends State<GlossaryContainer> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 50),
         margin: _onTapped
-            ? const EdgeInsets.all(20)
+            ? const EdgeInsets.all(1)
             : const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         height: widget.height,
         width: widget.width,
@@ -64,8 +71,8 @@ class _GlossaryContainerState extends State<GlossaryContainer> {
         child: Row(
           children: [
             SizedBox(
-              width: widget.width * 0.4,
-              height: widget.height * 0.8,
+              width: widget.width * 0.3,
+              height: widget.height * 0.5,
               child: FittedBox(
                 child: Icon(
                   widget.id == 1
@@ -90,7 +97,7 @@ class _GlossaryContainerState extends State<GlossaryContainer> {
                         ? Colors.black
                         : Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 23,
+                    fontSize: 20,
                     fontFamily: 'Quicksand'),
               ),
             ))

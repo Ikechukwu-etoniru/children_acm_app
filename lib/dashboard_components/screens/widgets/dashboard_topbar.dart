@@ -53,9 +53,9 @@ class DashboardTopbar extends StatelessWidget {
                   'Grow in Christ everyday',
                   style: TextStyle(
                       fontWeight: FontWeight.w800,
-                      fontSize: 20,
                       wordSpacing: 1,
-                      color: Colors.white),
+                      color: Colors.white,
+                      fontSize: 18),
                 ),
               ),
               SizedBox(

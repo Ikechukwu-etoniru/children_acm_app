@@ -45,13 +45,15 @@ class FavouriteScreen extends StatelessWidget {
         ),
         actions: const [AppbarTrailingIcon()],
       ),
-      body: favSongList.isEmpty &&
+      body: 
+      // If no favourite has been choosen
+      favSongList.isEmpty &&
               favStoryList.isEmpty &&
               favObjectLessonList.isEmpty &&
               favArtworkList.isEmpty
           ? Center(
               child: SizedBox(
-                height: deviceHeight * 0.6,
+                height: deviceHeight * 0.4,
                 width: deviceWidth * 0.9,
                 child: Column(
                   children: [
@@ -59,20 +61,22 @@ class FavouriteScreen extends StatelessWidget {
                         child: Image.asset(
                       'images/happy_girl.png',
                       fit: BoxFit.contain,
-                    )),
+                    ),),
                     const Text(
                       'You have not saved any favourites yet !!!!!!!!!',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.grey,
                           fontWeight: FontWeight.w600,
-                          fontSize: 25),
+                          fontSize: 22),
                     )
                   ],
                 ),
               ),
             )
-          : ListView(
+          : 
+          // If a favourite has been choosen
+          ListView(
               children: [
                 // Id for animation container in favorites is at least 5 as i want the navigation to be diffrent
                 AnimationContainer(

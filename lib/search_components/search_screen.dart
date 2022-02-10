@@ -191,7 +191,14 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
                 child: searchPhrase!.isEmpty
                     ? const Center(
-                        child: Text('Search box is empty'),
+                        child: Text(
+                          'Search box is empty',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700),
+                        ),
                       )
                     : songList.isEmpty &&
                             storyList.isEmpty &&
@@ -199,7 +206,13 @@ class _SearchScreenState extends State<SearchScreen> {
                             objectLessonList.isEmpty
                         ? Center(
                             child: Text(
-                                "We dont have any material for '$searchPhrase' \n Search term we dont have material for will be added in future updates"),
+                              "We don't have any teaching aids for '$searchPhrase'",
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700),
+                            ),
                           )
                         : ListView(
                             children: [

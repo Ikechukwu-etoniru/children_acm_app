@@ -112,7 +112,7 @@ class AppDrawer extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  _lowerDrawerList('Share', FontAwesomeIcons.rss),
+                  _lowerDrawerList('Share', FontAwesomeIcons.shareAlt),
                   _lowerDrawerList('Logout', FontAwesomeIcons.userAltSlash)
                 ]),
               ),

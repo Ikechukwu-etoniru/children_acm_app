@@ -92,12 +92,20 @@ class SearchResultScreenContainer extends StatelessWidget {
           ),
           SizedBox(
             width: width * 0.2,
-            child: Stack(children: const [
+            child: Stack(children: [
               Center(
-                child: Icon(Icons.emoji_objects,
-                    color: DashboardScreen.primaryColor, size: 60),
+                child: Icon(
+                    category == 'Songs'
+                        ? Icons.my_library_music
+                        : category == 'Stories'
+                            ? Icons.menu_book
+                            : category == 'Artworks'
+                                ? Icons.art_track
+                                : Icons.emoji_objects,
+                    color: DashboardScreen.primaryColor,
+                    size: 60),
               ),
-              Positioned(
+              const Positioned(
                 top: 22,
                 left: 5,
                 child: CircleAvatar(
@@ -105,7 +113,7 @@ class SearchResultScreenContainer extends StatelessWidget {
                   backgroundColor: Colors.yellow,
                 ),
               ),
-              Positioned(
+              const Positioned(
                 top: 8,
                 left: 13,
                 child: CircleAvatar(
@@ -113,7 +121,7 @@ class SearchResultScreenContainer extends StatelessWidget {
                   backgroundColor: Colors.yellow,
                 ),
               ),
-              Positioned(
+              const Positioned(
                 top: 5,
                 left: 40,
                 child: CircleAvatar(
